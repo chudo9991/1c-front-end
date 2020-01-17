@@ -8,7 +8,7 @@ function displayCanvas(){
     let xCenterClock = canvas.width/2;
     let yCenterClock = canvas.height/2;
 	
-    //Очистка экрана
+    //Очистка экрана. 
     context.fillStyle = "#ffffff";
     context.fillRect(0,0,canvas.width,canvas.height);
 	
@@ -26,22 +26,38 @@ function displayCanvas(){
     let radiusPoint;
     for(let tm = 0; tm < 60; tm++){
 	  context.beginPath();
-	  if(tm % 5 == 0){radiusPoint = 3;}else{radiusPoint = 2;} //для выделения часовых рисочек
+	  if(tm % 5 == 0){radiusPoint = 5;}else{radiusPoint = 2;} //для выделения часовых рисочек
 	  let xPointM = xCenterClock + radiusNum * Math.cos(-6*tm*(Math.PI/180) + Math.PI/2);
 	  let yPointM = yCenterClock - radiusNum * Math.sin(-6*tm*(Math.PI/180) + Math.PI/2);
 	  context.arc(xPointM, yPointM, radiusPoint, 0, 2*Math.PI, true);
 	  context.stroke();
 	  context.closePath();
     } 
-		
+	
+    //Оцифровка циферблата часов
+    for(let th = 1; th <= 12; th++){
+	context.beginPath();
+	context.font = 'bold 25px sans-serif';
+	let xText = xCenterClock + (radiusNum - 30) * Math.cos(-30*th*(Math.PI/180) + Math.PI/2);
+	let yText = yCenterClock - (radiusNum - 30) * Math.sin(-30*th*(Math.PI/180) + Math.PI/2);
+	if(th <= 9){
+		context.strokeText(th, xText - 5 , yText + 10);
+	}else{
+		context.strokeText(th, xText - 15 , yText + 10);
+	}
+     	context.stroke();
+	context.closePath();	
+    }
+
+	
     //Рисуем стрелки
     let lengthSeconds = radiusNum - 10;
     let lengthMinutes = radiusNum - 15;
     let lengthHour = lengthMinutes / 1.5;
-    let data = new Date();                //Получаем экземпляр даты
-    let t_sec = 6*data.getSeconds();                           //Определяем угол для секунд
-    let t_min = 6*(data.getMinutes() + (1/60)*data.getSeconds()); //Определяем угол для минут
-    let t_hour = 30*(data.getHours() + (1/60)*data.getMinutes()); //Определяем угол для часов
+    let d = new Date();                //Получаем экземпляр даты
+    let t_sec = 6*d.getSeconds();                           //Определяем угол для секунд
+    let t_min = 6*(d.getMinutes() + (1/60)*d.getSeconds()); //Определяем угол для минут
+    let t_hour = 30*(d.getHours() + (1/60)*d.getMinutes()); //Определяем угол для часов
 	
     //Рисуем секунды
     context.beginPath();
