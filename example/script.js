@@ -15,4 +15,17 @@ let date = new Date();
 let hours = date.getHours();
 let minutes = date.getMinutes();
 let seconds = date.getSeconds();
-console.log(hours, minutes, seconds);
+//console.log(hours, minutes, seconds);
+secondsAngle = (seconds/60)*(2*Math.PI);
+minutesAngle = (minutes/60)*(2*Math.PI);
+hoursAngle = ((hours%12)/12)*(2*Math.PI);
+
+secondsAngle = Math.PI/2 - secondsAngle;
+minutesAngle = Math.PI/2 - minutesAngle;
+hoursAngle = Math.PI/2 - hoursAngle;
+
+function drawWatch{
+    context.clearRect (0,0,300,300);
+
+    setTimeout(drawWatch, 1000);
+}
