@@ -20,8 +20,6 @@ text.forEach(element => {
     addWord(dictionary,element);
 });
 
-dictionary.sort(function(first, second) {
-    return second[1] - first[1];
-};
+dictionary.sort();
 
 console.log(dictionary);
