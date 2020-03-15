@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>5.6 - генерация списков</title>
+</head>
+<body>
+    <div id="app">
+        <h2> 5.6.1 - генерация списка из массива</h2>
+        <ul>
+            <li v-for="item in items">
+            {{ item.text }}</li>
+        </ul>
+    </div>
+
+    <div id="app2">
+        <h2> 5.6.1 - генерация списка из массива с выводом 'ключ':'значение'</h2>
+        <ul>
+            <li v-for="(item, index) in items">
+            {{ item.text }} &mdash; {{index}} </li>
+        </ul>
+    </div>
+
+    <div id="app3">
+        <h2> 5.6.2 - генерация списка из чисел</h2>
+        <ul>
+            <li v-for="i in n ">
+            {{ i * 2 }}
+            </li>
+        </ul>
+    </div>
+
+<script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
+<script src="56.js"></script>
+</body>
+</html>

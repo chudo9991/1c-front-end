@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>5.5.1 - классы</title>
+    <link rel="stylesheet" href="551.css">
+</head>
+<body>
+    <div id="app">
+        <h2>Пример 5.5.1 - классы</h2>
+        <label>
+            <input type="checkbox" v-model="headerStyle.blue">Синий
+        </label>
+        <label>
+            <input type="checkbox" v-model="headerStyle.underlined">Подчеркнутый
+        </label>
+        <h1 v-bind:class="{ 'header--blue': headerStyle.blue, 'header--underlined':headerStyle.underlined }">
+            Заголовок
+        </h1>
+    </div>
+  
+    <div id="appStyle">
+        <h2>Пример 5.5.2 - стили</h2>
+        <input type="range" v-model="sizeFactor" mim="1" max="5" step="0.1">
+        <p v-bind:style="{ 'font-size': sizeFactor + 'em' }">
+            Текст</p>
+    </div>
+
+    <script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
+    <script src="551.js"></script>
+
+</body>
+</html>

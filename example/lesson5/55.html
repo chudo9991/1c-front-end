@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>5.5 - директива связывания</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="query">
+        <a v-bind:href="'https://google.com/search?q='+query">Искать!</a>
+    </div>
+    <script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
+    <script src="script4.js"></script>
+</body>
+</html>
