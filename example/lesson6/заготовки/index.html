@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 6 - Это заготовки</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <h2>Сюда будем писать код</h2>
+        <label>
+            <input type="checkbox" v-model="headerStyle.blue">Синий
+        </label>
+        <label>
+            <input type="checkbox" v-model="headerStyle.underlined">Подчеркнутый
+        </label>
+        <h1 v-bind:class="{ 'header--blue': headerStyle.blue, 'header--underlined':headerStyle.underlined }">
+            Заголовок
+        </h1>
+    </div>
+  
+    <script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
