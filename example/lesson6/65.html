@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>6.2 - Вычисляемые данные. Vue.js</title>
+</head>
+<body>
+    <p>Воспользуемся возможностями словаря <b>computed</b> Vue.js. Зажмем Ctrl и выберем несколько чисел. Созданный нами метод <b>average</b> возвращает сумму элементов, деленную на их количество.</p>
+    <div id="app">
+        <h3>Вычисляем среднее арифметическое</h3>
+        <select type="text" v-model="numbers" multiple size="5">
+            <option v-for="i in 5">{{ i }}</option>
+        </select>
+        <p>Среднее арифметическое: {{ average }}</p>
+    </div>
+    <script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
+    <script src="66.js"></script>
+    <p>В код HTML страницы вносим вот такой блок:</p>
+    <pre>
+        &lt;div id="app"&gt;
+            &lt;h3&gt;Вычисляем среднее арифметическое&lt;/h3&gt;
+            &lt;select type="text" v-model="numbers" multiple size="5"&gt;
+                &lt;option v-for="i in 5"&gt;{{ i }}&lt;/option&gt;
+            &lt;/select&gt;
+            &lt;p&gt;Среднее арифметическое: {{ average }}&lt;/p&gt;
+        &lt;/div&gt;
+    </pre>
+    <p>В файле <i>66.js</i> определяем словарь <b>computed</b> и метод <b>average</b>.</p>
+    <pre>
+        let vm = new Vue ({
+            el: "#app",
+            data: {
+                numbers: ["1", "4"]
+                },
+            computed: {
+                average : function() {
+                    let sum=0, n=this.numbers.length;
+                    for (let i=0; i < n; ++i) {
+                        sum += Number(this.numbers[i]);
+                    }
+                    return sum/n;
+                }
+            }
+        });
+        
+    </pre>
+    <p>В словарь <b>numbers</b> мы передаем выбранные числа. Изначально выбраны первое и четвертое число списка. В методе <b>average</b> запускаем цикл от 0 до n. При этом n равно длине списка. Складываем все числа в переменную sum.</p>
+    <p>Когда работа метода завершена, он возвращает значение sum/n, т.е. среднее арифметическое по списку.</p>
+    <footer>
+        <center>
+        <a href="63mod.html">Назад</a>&nbsp;|&nbsp;<a href="67.html">Вперед</a>
+        </center>
+    </footer>
+</body>
+</html>

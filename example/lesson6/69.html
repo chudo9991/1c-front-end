@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>6.4 - Условная генерация. Vue.js</title>
+</head>
+<body>
+    <p>Директивы <b>v-if</b> и <b>v-show</b> управляют видимостью элемента в зависимости от значения выражения.</p>
+    <p>Если выражение ложно, от <b>v-if</b> удаляет элемент целиком, а <b>v-show</b> лишь скрывает его при помощи <i>display: none</i>.</p>
+    <div id="app">
+        <h3>Скрываем элементы:</h3>
+        <input type="checkbox" v-model="visible">
+        <h1 v-show="visible">Now You See Me!</h1>
+    </div>
+    <script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
+    <script src="610.js"></script>
+
+    <p>Код в HTML:</p>
+    <pre>
+        &lt;div id="app"&gt;
+            &lt;h3&gt;Скрываем элементы:&lt;/h3&gt;
+            &lt;input type="checkbox" v-model="visible"&gt;
+            &lt;h1 v-show="visible"&gt;Now You See Me!&lt;/h1&gt;
+        &lt;/div&gt;
+    </pre>
+
+    <p>Код в <i>610.js</i>:</p>
+    <pre>
+        let vm = new Vue ({
+            el: "#app",
+            data: {
+                visible: true 
+            }
+        });
+    </pre>
+    
+    <footer>
+        <center>
+        <a href="67.html">Назад</a>&nbsp;|&nbsp;<a href="611.html">Вперед</a>
+        </center>
+    </footer>
+</body>
+</html>

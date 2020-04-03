@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>6.1.1 - Коды клавиш. Vue.js</title>
+</head>
+<body>
+    <p>В этом примере мы уберем проверку на нажание клавиши enter при вводе нового дела.</p>
+    <div id="app">
+        <h3>Список дел (модифицированный)</h3>
+        <input type="text" v-model="thing" v-on:keydown.enter="addItem">
+        <!-- <input type="text" v-model="thing" v-on:keydown.13="addItem"> -->
+        <ol>
+            <li v-for="(item,index) of list"
+                v-on:click="removeItem(index)">{{ item }}</li>
+        </ol>
+    </div>
+    <script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
+    <script src="64mod.js"></script>
+    <p>Мы заменили вот такой код в HTML:</p>
+    <pre>
+        &lt;input type="text" v-model="thing" v-on:keydown="addItem($event)"&gt;
+    </pre>
+    <p>На вот такой:</p>
+    <pre>
+        &lt;input type="text" v-model="thing" v-on:keydown.enter="addItem"&gt;
+    </pre>
+    <p>Или вот такой:</p>
+    <pre>
+        &lt;input type="text" v-model="thing" v-on:keydown.13="addItem"&gt;
+    </pre>
+    <p>И изменили в <i>64mod.js</i> вот этот код:</p>
+    <pre>
+        addItem: function (event) {
+            if (event.which==13) { 
+                this.list.push(this.thing); 
+                this.thing="";
+            }
+        },
+    </pre>
+    <p>На вот такой. При этом мы убрали не нужную более проверку на нажатую клавишу, перенеся её в HTML.</p>
+    <pre>
+        addItem: function (event) {
+            this.list.push(this.thing); 
+            this.thing="";
+            }
+        },
+    </pre>
+    <div>
+        Для этих клавиш можно использовать псевдонимы вместо кодов:
+        <ul>
+            <li>латинские буквы от a до z</li>
+            <li>enter</li>
+            <li>tab</li>
+            <li>delete</li>
+            <li>esc</li>
+            <li>space</li>
+            <li>up, down, left, right - стрелочки</li>
+        </ul>
+    </div>
+    <footer>
+        <center>
+        <a href="63.html">Назад</a>&nbsp;|&nbsp;<a href="65.html">Вперед</a>
+        </center>
+    </footer>
+</body>
+</html>

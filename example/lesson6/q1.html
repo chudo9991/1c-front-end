@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>6.6.1 - Квадратные уравнения</title>
+</head>
+<body>
+    <div id="app">
+        X^2+
+        <input type="number" v-model.number="b" v-on:keydown.enter="calc">
+        *X+
+        <input type="number" v-model.number="c" v-on:keydown.enter="calc">
+        =0
+        <p>D={{ D }}</p>
+        <p>Решения: {{ x1 }}, {{ x2 }}</p>
+       
+        
+    </div>
+
+    <div id="plot">
+    </div>
+
+    <script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://wzrd.in/standalone/function-plot@1.17.0"></script>
+    <script src="q1.js"></script>
+    
+  
+        <script>
+            functionPlot ({
+                target: "#plot",
+                data: [{
+                fn: "x^2+4*x-1"
+                }],
+                grid: true
+            });
+        </script>
+  
+
+    <footer>
+        <center>
+        <a href="homework.html">Назад</a>
+        </center>
+    </footer>
+</body>
+</html>

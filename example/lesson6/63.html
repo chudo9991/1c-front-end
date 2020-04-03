@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>6.1 - События. Vue.js</title>
+</head>
+<body>
+    <p>Ниже реализован "список дел". Можно написать название дела и нажать enter. Оно добавиться в список. При клике на него дело удалиться из списка.</p>
+    <div id="app">
+        <h3>Список дел</h3>
+        <input type="text" v-model="thing" v-on:keydown="addItem($event)">
+        <ol>
+            <li v-for="(item,index) of list"
+                v-on:click="removeItem(index)">{{ item }}</li>
+        </ol>
+    </div>
+    <script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
+    <script src="64.js"></script>
+    <div>
+        <p>Мы реализовали это с помощью вот такого кода в HTML:</p>
+        <pre>
+            <!-- &lt; &gt; -->
+            &lt;div id="app"&gt;
+                &lt;h3&gt;Список дел&lt;/h3&gt;
+                &lt;input type="text" v-model="thing" v-on:keydown="addItem($event)"&gt;
+                &lt;ol&gt;
+                    &lt;li v-for="(item,index) of list"
+                        v-on:click="removeItem(index)"&gt;{{ item }}&lt;/li&gt;
+                &lt;/ol&gt;
+            &lt;/div&gt;
+        </pre>
+        <p>И вот такого кода в файле <i>64.js</i>:</p>
+        <pre>
+            <!-- &lt; &gt; -->
+            let vm = new Vue ({
+                el: "#app",
+                data: {
+                    list : ["Мой руки!", "Делай уроки!", "Ложись спать!", "Автор: фреккен Бок из Карлссона"],
+                    thing : ""
+                    },
+                methods : {
+                    addItem: function (event) {
+                        if (event.which==13) { 
+                            this.list.push(this.thing); 
+                            this.thing="";
+                        }
+                    },
+                    removeItem : function (index) { 
+                        this.list.splice(index,1);  
+                    }
+            
+                }
+            });
+        </pre>
+    </div>
+    <div>
+        <p>В словаре <b>data</b> мы задаем заранее подготовленный список задач <b>list</b> и переменную <b>thing</b> в которую будем вносить данные от пользователя.</p>
+        <P>В словаре <b>methods</b> мы определяем работу двух методов: <b>addItem</b> и <b>removeItem</b>. Причем в <b>addItem</b> мы передаем словарь <b>event</b>. А в <b>removeItem</b> номер элемента в списке, на котором кликнул пользователь.</p>
+        <p><b>$event</b> - стандартный элемент <a href="https://ru.wikipedia.org/wiki/Document_Object_Model">DOM-модели</a>, передается как словарь.</p>
+    </div>
+    <footer>
+        <center>
+        <a href="61.html">Назад</a>&nbsp;|&nbsp;<a href="63mod.html">Вперед</a>
+        </center>
+    </footer>
+</body>
+</html>

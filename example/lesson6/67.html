@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>6.3 - Наблюдение. Vue.js</title>
+</head>
+<body>
+    <p>В этом примере кнопки + и - изменяют число. Но самое интересное, что счетчик считает все изменения: и в положительную, и в отрицательную стороны.</p>
+    <div id="app">
+        <h3>Считаем изменения:</h3>
+        <button type="button" v-on:click="decrease">-</button>
+        {{ number }}
+        <button type="button" v-on:click="increase">+</button>
+        <p>Количество изменений числа: {{ changesCount }}</p>
+    </div>
+    <script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
+    <script src="68.js"></script>
+
+    <p>Необходимый нам код в HTML:</p>
+    <pre>
+        &lt;div id="app"&gt;
+            &lt;h3&gt;Считаем изменения:&lt;/h3&gt;
+            &lt;button type="button" v-on:click="decrease"&gt;-&lt;/button&gt;
+            {{ number }}
+            &lt;button type="button" v-on:click="increase"&gt;+&lt;/button&gt;
+            &lt;p&gt;Количество изменений числа: {{ changesCount }}&lt;/p&gt;
+        &lt;/div&gt;
+    </pre>
+
+    <p>И в файле <i>68.js</i>:</p>
+    <pre>
+        let vm = new Vue ({
+            el: "#app",
+            data: {
+                number: 0,
+                changesCount: 0
+                },
+            methods: {
+                increase: function() {
+                    this.number +=1;
+                },
+                decrease: function() {
+                    this.number -=1;
+                }
+            } 
+        });
+        
+        vm.$watch("number", function(newValue) {
+            console.log(newValue);
+            this.changesCount+=1;
+        });
+    </pre>
+
+    <p>Функция <b>$watch</b> добавляет обрвботчик, который следит за изменением значения переменной. При каждой его сработке, мы добавляем +1 в переменную <b>changesCount</b>. А затем выводим её значение в HTML.</p>    
+
+    <footer>
+        <center>
+        <a href="65.html">Назад</a>&nbsp;|&nbsp;<a href="69.html">Вперед</a>
+        </center>
+    </footer>
+</body>
+</html>

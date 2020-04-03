@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>6.5 - Переходы. Vue.js</title>
+    <link rel="stylesheet" href="611.css">
+</head>
+<body>
+    <p>Добавим немного красоты! С помощью тега <b>transition</b> можно задавать анимации появления и исчезновения элементов.</p>
+    <div id="app">
+        <h3>Скрываем элементы (модифицированный):</h3>
+        <input type="checkbox" v-model="visible">
+        <transition name="fade">
+            <h1 v-show="visible">Now You See Me!</h1>
+        </transition>
+    </div>
+    <script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
+    <script src="610.js"></script>
+
+    <p>Код в HTML:</p>
+    <p>Добавили подключение CSS в раздел HEAD:</p>
+    <pre>
+        &lt;link rel="stylesheet" href="611.css"&gt;
+    </pre>
+    
+    <p>В файле стилей <i>611.css</i> прописали следующее:</p>
+    <pre>
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity 1s ease;
+        }
+        
+        .fade-enter, .fade-leave-to {
+            opacity: 0;
+        }
+    </pre>
+    
+    <p>Описание необходимых классов:
+        <ul>
+            <li><b>*-enter-active</b> - описывает свойства объекта во время появления</li>
+            <li><b>*-leave-active</b> - описывает свойства объекта во время исчезновения</li>
+            <li><b>*-enter</b> - описывает свойства объекта в начале появления</li>
+            <li><b>*-leave-to</b> - описывает свойства объекта в конце исчезновения</li>
+        </ul>
+    </p>
+    <footer>
+        <center>
+        <a href="67.html">Назад</a>&nbsp;|&nbsp;<a href="homework.html">Вперед</a>
+        </center>
+    </footer>
+</body>
+</html>

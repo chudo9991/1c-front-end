@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>6.1 - События. Vue.js</title>
+</head>
+<body>
+    <p>Начнем с простого примера. Написанная нами программа при нажатии на кнопку "Удвоить" число будет увеличиваться в 2 раза. </p>
+    <p>Происходить это будет за счет обработчика событий.</p>
+    <div id="app">
+        <button type="button" v-on:click="double">Удвоить</button>
+        <p>{{number}}</p>
+    </div>
+    <script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
+    <script src="62.js"></script>
+    <div>
+        <p>Обработчик событий - ждет пока не случится то или иное событие. Нажатие клавиши, клик на определенном элементе и т.д. Как только событие случилось - обрабатывает его!</p>
+        <p>Обрабатывают события - <b>методы</b>. Они же - процедуры и функции. Но в ООП их принято называть методами, так как они являются частью <b>объекта</b>.</p>
+        <p>Их объявляют в словаре <b>methods</b>. У нас листинг 6.2 "спрятан" в файл <i>62.js</i>.</p>
+        <pre>
+            Листинг 6.2
+
+            let vm = new Vue ({
+                el: "#app",
+                data: {
+                    number : 1
+                    },
+                methods : {
+                    double: function(event) {
+                        console.log(event);
+                        this.number *=2;
+                    }
+                }
+            });
+        </pre>
+        <p>При этом сам <b>vm</b> и есть объект!</p>
+        <p>В тексте этой страницы есть вот такой код, заставляющий всё работать.</p>
+        <pre>
+            &lt;div id="app"&gt;
+                &lt;button type="button" v-on:click="double"&gt;Удвоить&lt;/button&gt;
+                &lt;p&gt;{{number}}&lt;/p&gt;
+            &lt;/div&gt;
+        </pre>
+    </div>
+    <footer>
+        <center>
+        <a href="index.html">Назад</a>&nbsp;|&nbsp;<a href="63.html">Вперед</a>
+        </center>
+    </footer>
+</body>
+</html>
