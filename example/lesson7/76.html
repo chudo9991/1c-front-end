@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 7</title>
+</head>
+<body>
+    <p><b>7.2.3 Структура</b></p>
+    <p>Добавим файл <i>header.vue</i> с кодом новой компоненты.</p>
+    <p>Теперь мы можем использовать её в любых шаблонах. Зададим в главной компоненте тег-соответствие при помощи словаря components.</p>
+    <p>Скомпилируем и убедимся в наличии синей надписи.</p>
+    <p>Обратите внимание <b>c-tag</b> заменился заголовком <b>h1</b>.</p>
+    <p>Команда для PowerShell: 'browserify main.js --outfile bundle.js --transform vueify'.</p>
+       
+    <pre>
+        Листинг 7.11 header.vue
+
+        &lt;style scoped&gt;
+            h1{
+                color: blue;
+            }
+        &lt;/style&gt;
+        
+        &lt;template&gt;
+            &lt;h1&gt;{{msg}}&lt;/h1&gt;
+        &lt;/template&gt;
+        
+        &lt;script&gt;
+            module.exports={
+                data: function() {
+                    return {
+                        msg: "Hello, component!"
+                    };
+                }
+            };
+        &lt;/script&gt;
+    </pre>  
+    <pre>
+        Листинг 7.12 app.vue
+    
+        &lt;template&gt;
+            &lt;div&gt;
+                &lt;c-tag&gt;&lt;/c-tag&gt;
+            &lt;/div&gt;
+        &lt;/template&gt;
+        &lt;script&gt;
+            let Header=require("./header.vue");
+            
+            module.exports={
+                components: {cTag:Header}
+            };
+        &lt;/script&gt;
+    </pre>
+    <footer>
+        <center>
+        <a href="75.html">Назад</a>&nbsp;|&nbsp;<a href="77.html">Вперед</a>
+        </center>
+    </footer>
+</body>
+</html>

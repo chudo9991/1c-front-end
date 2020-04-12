@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 7</title>
+</head>
+<body>
+    <p><b>7.2 Компоненты</b></p>
+    <p>Однотипные блоки элементов удобно объединять в <i>компоненты</i>, располагая их код в отдельных файлах с расширением <i>.vue</i>.</p>
+    <p><b>7.2.1 Vueify</b></p>
+    <p>Установим Vue.js и модули необходимые для сборки компонент. Обратите внимание, что это может быть долго.</p>
+    <p style="color:#ff0000"><b>Это в Windows PowerShell!</b>
+    <ol>
+        <li>Выполняем 'npm install vue --save'.</li>
+        <li>Выполняем 'npm install vueify babel-core babel-preset-es2015 babel-runtime babel-plugin-transform-runtime --save-dev'.</li>        
+    </ol>
+    </p>
+    <p><b>7.2.2 Архитектура</b></p>
+    <p>Создадим простейшее приложение, состоящее из 3 файлов: <i>index.html, main.js</i> с основным скриптом и <i>app.vue</i> с кодом корневой компоненты.</p>
+    <p>В основном скрипте инициализируем экземпляр Vue с функцией <b>render</b>, подставляющей компоненту из <i>app.vue</i> вместо элемента с <b>id="root"</b>.</p>
+    <p>Обратите внимание! Шаблон любой компоненты обязан содержать ровно один корневой элемент.</p>
+    <p>Когда код набран, компилируем его в Windows PowerShell: 'browserify main.js --outfile bundle.js --transform vueify'.</p>
+    <pre>
+        Листинг 7.6 index.html
+
+    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+        &lt;head&gt;
+            &lt;meta charset="uft-8"&gt;
+            &lt;title&gt;Компоненты&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;div id="root"&gt;&lt;/div&gt;
+            &lt;script src="bundle.js"&gt;&lt;/script&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;
+    </pre>
+    <pre>
+        Листинг 7.7 main.js
+    
+    let Vue=require("vue");
+    let App=require("./app.vue");
+
+    let vm = new Vue({
+        el: "#root",
+        render: function(createElement) {
+            return createElement(App);
+        }   
+    });
+    </pre>    
+    <pre>
+        Листинг 7.8 app.vue
+
+    &lt;template&gt;
+        &lt;div&gt;
+            Hello, World!
+        &lt;/div&gt;
+    &lt;/template&gt;    
+    </pre>
+    
+    <footer>
+        <center>
+        <a href="74.html">Назад</a>&nbsp;|&nbsp;<a href="76.html">Вперед</a>
+        </center>
+    </footer>
+</body>
+</html>

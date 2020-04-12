@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 7</title>
+</head>
+<body>
+    <p><b>7.1 Browserify</b></p>
+    <p><b>7.1.1 Использование пакетов</b></p>
+    <p>Клиентской части крупных проектов используются десятки библитек и модулей JavaScript, зависящих друг от друга. Чтобы оперделить порядок их подключения вручную, требуется проделать немалую работу. Кроме того, следить чтобы всё глобальные переменные имели уникальные имена, при таком большом числе файлов неудобно.</p>
+    <p>Для решения этих проблем в <b>Node.js</b> применяется концепция пакетов, подключаемых функцией <b>require</b>. Поскольку в браузере аналогичной системы нет, вместо ней используется <a href="https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BC%D0%BF%D0%BE%D0%BD%D0%BE%D0%B2%D1%89%D0%B8%D0%BA"><i>сборщик</i></a> <b>Browserify</b>. Сейчас мы будем его устанавливать.</p>
+    <p style="color:#ff0000"><b>Это делаем в Windows Power Shell и Node.js!</b>
+    <ol>
+        <li>Запустить Windows PowerShell</li>
+        <li>Набрать 'node --version'</li>
+        <li>Набрать 'npm install --global browserify'.</li>
+        <li>Перейти в папку "example". Использовать команды cd (сменить директорию) и dir (список файлов в директории).</li>
+        <li>В папке "заготовки" набрать 'npm init --force'.Эта папка станет нашим сервером.</li>
+        <li>Установить JQuery набрав 'npm install jquery --save'.</li>
+    </ol>
+    </p>
+    <p>Теперь создадим страницу с кнопкой.</p>
+
+    <pre>
+        Листинг 7.1 index.html 
+
+        &lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        &lt;head&gt;
+            &lt;meta charset="uft-8"&gt;
+            &lt;title&gt;Browserify&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;button type="button"&gt;Alert!&lt;/button&gt;
+            &lt;script src="bundle.js"&gt;&lt;/script&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+    </pre>
+
+    <pre>
+        Листинг 7.2 main.js
+
+        let $=require("jquery")
+        $("button").on("click", function() {
+            alert("Hello, Browserify!");
+        });        
+    </pre>
+
+    <p>Что делать дальше<ol>
+        <li>Запустить Windows PowerShell</li>
+        <li>Набрать 'browserify main.js --outfile bundle.js'.</li>
+        <li>Открыть страницу в браузере</li></ol>
+    </p>
+    <p>Теперь при нажатии кнопки <button>Alert!</button> будет выскакивать окно с вашим текстом.</p>
+    <p style="color:lightcoral"><b>Как разрешить выполнение неподписанного скрипта PowerShell?</b> <br> В оболочке PowerShell, перед тем как запускать скрипт, выполнить команду, разрешающую выполнение неподписанных скриптов для текущего сеанса оболочки: <b>Set-ExecutionPolicy RemoteSigned -Scope Process.</b></p>
+    <footer>
+        <center>
+        <a href="lastlesson.html">Назад</a>&nbsp;|&nbsp;<a href="72.html">Вперед</a>
+        </center>
+    </footer>
+</body>
+</html>

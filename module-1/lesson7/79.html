@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 7</title>
+    <link rel="stylesheet" href="79.css">
+</head>
+<body>
+    
+    <p><strong>7.4 Функциональность</strong></p>
+
+    <p><i>7.4.7 addClass, removeClass и toggleClass</i></p>
+    <p>Функции <b>addClass, removeClass</b> и <b>toggleClass</b> добавляют, удаляют и переключают классы элементов соответственно.</p>
+    
+    <div class="block"></div>
+    <button type="button" id="switch">ВКЛ/ВЫКЛ</button>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $("#switch").on("click", function(){
+            $(".block").toggleClass("block--lit");
+        });
+    </script>
+    
+    <pre>
+        Листинг 7.8 body (index.html)
+
+        &lt;div class="block"&gt;&lt;/div&gt;
+        &lt;button type="button" id="switch"&gt;ВКЛ/ВЫКЛ&lt;/button&gt;
+        &lt;script src="https://code.jquery.com/jquery-3.3.1.min.js"&gt;&lt;/script&gt;
+        &lt;script&gt;
+            $("#switch").on("click", function(){
+                $(".block").toggleClass("block--lit");
+            });
+        &lt;/script&gt;
+
+     </pre>
+     <p>Подключаем <i>style.css</i>:</p>
+     <pre>
+        &lt;head&gt;
+        ...
+        &lt;link rel="stylesheet" href="style.css"&gt;
+        &lt;/head&gt;
+     </pre>
+     <p>В <i>style.css</i> прописываем:</p>
+     <pre>
+        Листинг 7.9 style.css
+
+        .block {
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+            background-color: black;
+        }
+        
+        .block--lit {
+            background-color: yellow;
+        }
+     </pre>
+    
+    
+    <footer>
+        <center>
+        <a href="78.html">Назад</a>&nbsp;|&nbsp;<a href="710.html">Вперед</a>
+        </center>
+    </footer>  
+    
+</body>
+</html>

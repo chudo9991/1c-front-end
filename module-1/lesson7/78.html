@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 7</title>
+    <link rel="stylesheet" href="78.css">
+</head>
+<body>
+    
+    <p><strong>7.4 Функциональность</strong></p>
+
+    <p><i>7.4.6 width и height</i></p>
+    <p>Функции <b>width</b> и <b>height</b> возвращают или устанавливают длину или ширину элементов соответственно.</p>
+    
+    <div class="block"></div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $("*.block").width(100).height(50);
+        alert($(".block").width())
+    </script>
+    
+    <pre>
+        Листинг 7.8 body (index.html)
+
+        &lt;div class="block"&gt;&lt;/div&gt;
+        &lt;script src="https://code.jquery.com/jquery-3.3.1.min.js"&gt;&lt;/script&gt;
+        &lt;script&gt;
+            $("*.block").width(100).height(50);
+            alert($(".block").width())
+        &lt;/script&gt;
+     </pre>
+     <p>Подключаем <i>style.css</i>:</p>
+     <pre>
+        &lt;head&gt;
+        ...
+        &lt;link rel="stylesheet" href="style.css"&gt;
+        &lt;/head&gt;
+     </pre>
+     <p>В <i>style.css</i> прописываем:</p>
+     <pre>
+        Листинг 7.7 style.css
+
+        .block {
+            background-color: red;
+        }
+     </pre>
+    
+    
+    <footer>
+        <center>
+        <a href="77.html">Назад</a>&nbsp;|&nbsp;<a href="79.html">Вперед</a>
+        </center>
+    </footer>  
+    
+</body>
+</html>

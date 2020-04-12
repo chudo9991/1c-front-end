@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Example 1</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <h2>Добро пожаловать в мир jQuery</h2>
+    <button id="btn1">jQuery</button>
+    <button id="btn2" onclick="alert('Мир JavaScript'); ">JavaScript</button>
+ 
+    <script type="text/javascript">
+    $(function(){
+        $("#btn1").click(function(){ 
+            $(this).css('background-color', 'red');
+            alert('Мир jQuery');
+        });
+    });
+    </script>
+    
+    <p>Вот листинг примера</p>
+    <pre>
+        &lt;h2&gt;Добро пожаловать в мир jQuery&lt;/h2&gt;
+        &lt;button id="btn1"&gt;jQuery&lt;/button&gt;
+        &lt;button id="btn2" onclick="alert('Мир JavaScript'); "&gt;JavaScript&lt;/button&gt;
+ 
+        &lt;script type="text/javascript"&gt;
+        $(function(){
+            $("#btn1").click(function(){ 
+                $(this).css('background-color', 'red');
+                alert('Мир jQuery');
+            });
+        });
+        &lt;/script&gt;
+    </pre>
+
+    <footer>
+        <center>
+        <a href="72.html">Назад</a>
+        </center>
+    </footer>  
+    
+</body>
+</html>

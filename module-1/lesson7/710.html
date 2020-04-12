@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 7</title>
+    <link rel="stylesheet" href="710.css">
+</head>
+<body>
+    
+    <p><strong>7.4 Функциональность</strong></p>
+
+    <p><i>7.4.8 parent, children и siblings</i></p>
+    <p>Функция <b>parent</b> возвращает родителей элементов.</p>
+    <p>Функция <b>children</b> возвращает потомков элементов. <a href="example2.html">Пример.</a></p>
+    <p>Функция <b>siblings</b> возвращает сестринские элементы. <a href="example3.html">Пример.</a></p>
+    
+    <div class="ancestor">
+        <div id="outer">
+            <div>
+                <div></div>
+                <div id="inner"></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $("#inner").parent().css({border: "1px solid red" });
+    </script>
+    
+    <pre>
+        Листинг 7.8 body (index.html)
+
+        &lt;div class="ancestor"&gt;
+            &lt;div id="outer"&gt;
+                &lt;div&gt;
+                    &lt;div&gt;&lt;/div&gt;
+                    &lt;div id="inner"&gt;&lt;/div&gt;
+                    &lt;div&gt;&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    
+        &lt;script src="https://code.jquery.com/jquery-3.3.1.min.js"&gt;&lt;/script&gt;
+        &lt;script&gt;
+            $("#inner").parent().css({border: "1px solid red" });
+        &lt;/script&gt;
+
+     </pre>
+     <p>Подключаем <i>style.css</i>:</p>
+     <pre>
+        &lt;head&gt;
+        ...
+        &lt;link rel="stylesheet" href="style.css"&gt;
+        &lt;/head&gt;
+     </pre>
+     <p>В <i>style.css</i> прописываем:</p>
+     <pre>
+        Листинг 7.11 style.css
+
+        .ancestor {
+            border: 1px solid gray;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px;   
+        }
+     </pre>
+    
+    
+    <footer>
+        <center>
+        <a href="79.html">Назад</a>&nbsp;|&nbsp;<a href="711.html">Вперед</a>
+        </center>
+    </footer>  
+    
+</body>
+</html>

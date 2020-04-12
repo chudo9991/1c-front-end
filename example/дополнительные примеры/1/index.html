@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Дополнительный пример 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    <span v-on:mouseover="changeText">Наведи на текст и следующая строка изменится</span>
+    <p>{{ title }}</p>
+    <p v-bind:class="colorFromVue">Цвет: {{ colorFromVue }}</p>
+    <input type="text" v-on:input="colorFromVue = $event.target.value">
+    <p>Набери gray, blue, pink, yellow</p>
+</div>
+
+<script src="script.js"></script>
+
+
+</body>
+</html>

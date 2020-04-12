@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 7</title>
+</head>
+<body>
+    <p><b>7.2.4 Параметры</b></p>
+    <p>Каждая компонента имеет отдельную <a href="https://ru.wikipedia.org/wiki/%D0%9E%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C_%D0%B2%D0%B8%D0%B4%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D0%B8">область видимости</a>. Это значит, что в дочерней компоненте нельзя напрямую использовать переменные словаря данных родительской компоненты.</p>
+    <p>Однако, их можно передавать при помощи параметров, список которых задается в поле <b>props</b> дочерней компоненты.</p>
+    <p>Команда для PowerShell: 'browserify main.js --outfile bundle.js --transform vueify'.</p>
+    
+    <pre>
+        Листинг 7.13 par-cap.vue
+
+        &lt;style scoped&gt;
+            div {
+                display: inline-block;
+                background: yellow;
+            }
+        &lt;/style&gt;
+        
+        &lt;template&gt;
+            &lt;div&gt;
+                &lt;p&gt;{{ pText.toUpperCase() }}&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/template&gt;
+        
+        &lt;script&gt;
+            module.exports = {props: ["pText"]};
+        &lt;/script&gt;
+    </pre>
+    <pre>
+        Листинг 7.14 app.vue
+
+        &lt;template&gt;
+            &lt;div&gt;
+                &lt;p&gt;&lt;input type="text" v-model="message"&gt;&lt;/p&gt;
+                &lt;par-cap v-bind:p-text="message"&gt;&lt;/par-cap&gt;
+            &lt;/div&gt;
+        &lt;/template&gt;
+        &lt;script&gt;
+            let ParCap=require("./par-cap.vue")
+            
+            module.exports={
+                data: function() {
+                    return {message: "Hello, component!"};
+                },
+                components: {
+                    parCap: ParCap
+                }
+            };
+        &lt;/script&gt;
+    </pre>
+    
+    <p><b>7.2.5 Одностороннее связывание</b></p>
+    <p>Добавим текстовое поле после строки 3 листинга 7.14.</p>
+    <pre>
+        &lt;p&gt;&lt;input type="text" v-model="pText"&gt;&lt;/p&gt;</pre>
+    <p>Обратите внимание, что изменения в верхнем текстовом поле, принадлежащей главной компоненте App, отображаются в компоненте ParCap, выделенной желтым.</p>
+    <p>Однако, изменения нижнего текстового поля, принадлежащего ParCap, лишь модифицируют надпись но не влияют на текстовое поле родительской компоненты.</p>
+    <p>Дело в том, что передача параметров примитивных типов является односторонней, "сверху вниз": от родительской компоненты к дочерней.</p>
+    <p>Для передачи информации "снизу вверх" используют <i>сообщения</i>.</p>
+    <footer>
+        <center>
+        <a href="76.html">Назад</a>&nbsp;|&nbsp;<a href="78.html">Вперед</a>
+        </center>
+    </footer>
+</body>
+</html>

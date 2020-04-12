@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 7</title>
+</head>
+<body>
+    <p><b>7.3 Маршрутизация</b></p>
+    <p>Компоненты могут представлять собой и отдельные страницы приложения. Для организации навигации между ними используют <i>маршрутизатор</i>.</p>
+    <p>Установка маршрутизатора: 'npm install vue-router --save'.</p>
+    <p style="color:#ff0000"><b>Это в Windows PowerShell!</b>
+    <p>Создадим дву компоненты-страницы: <i>enlarger.vue</i> и <i>reducer.vue</i></p>
+    <p>В шаблон <i>app.vue</i> внесем тег <b>router-view</b>. На месте этих тегов будут располагаться страницы.</p>
+    <p>В <i>main.js</i> добавим соответствия между путями из атрибутов <b>to</b> элементов <b>router-link</b> и страницвми.</p>
+    <p>Компилируем в PowerShell:'browserify main.js --outfile bundle.js --transform vueify'.</p>
+    <p>Обратите внимание на адресную строку!</p>
+        <pre>
+        Листинг 7.18 enlarger.vue
+        &lt;template&gt;
+            &lt;h1 v-on:mouseover="enlarge"&gt;{{ number }}&lt;/h1&gt;
+        &lt;/template&gt;
+        &lt;script&gt;
+            module.exports={
+                data: function() {
+                    return {number: 0};
+                },
+                methods: {
+                    enlarge: function() {
+                        this.number+=1;
+                    }
+                }
+            };
+        &lt;/script&gt;
+        </pre>
+        <pre>
+        Листинг 7.19 reducer.vue
+
+        &lt;template&gt;
+            &lt;button type="button" v-on:click="reduce"&gt;{{ number }}&lt;/button&gt;
+        &lt;/template&gt;
+        &lt;script&gt;
+            module.exports={
+                data: function() {
+                    return {number:0};
+                },
+            methods: {
+                reduce: function() {
+                    this.number-=1;
+                }
+            }
+        };
+        &lt;/script&gt;
+    </pre>
+    <pre>
+        Листинг 7.20 app.vue 
+
+        &lt;template&gt;
+            &lt;div&gt;
+                &lt;p&gt;App.vue&lt;/p&gt;
+                &lt;router-link to="/add"&gt;ADD!&lt;/router-link&gt;
+                &lt;router-link to="/deduct"&gt;DEDUCT!&lt;/router-link&gt;
+                &lt;div&gt;&lt;router-view&gt;&lt;/router-view&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/template&gt;
+    </pre>
+    <pre>
+        Листинг 7.21
+
+        let Vue=require("vue");
+        let VueRouter=require("vue-router");
+        let App=require("./app.vue");
+        let Enlarger=require("./enlarger.vue");
+        let Reducer=require("./reducer.vue");
+
+        Vue.use(VueRouter);
+
+        let router = new VueRouter({
+        routes: [
+            {path: "/add", component: Enlarger},
+            {path: "/deduct", component: Reducer}
+            ]
+        });
+
+        let vm = new Vue({
+        el: "#root",
+        router: router,
+        render: function(createElement) {
+            return createElement(App);
+            }
+        });
+    </pre>
+    <footer>
+        <center>
+        <a href="78.html">Назад</a>&nbsp;|&nbsp;<a href="710.html">Вперед</a>
+        </center>
+    </footer>
+</body>
+</html>

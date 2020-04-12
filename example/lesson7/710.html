@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 7</title>
+</head>
+<body>
+    <p><b>7.3.1 Глобальные переменные</b></p>
+    <p>Попробуем связать числа в компоненатах Enlarger и Reducer. Для этого создадим модуль <i>globals.js</i>, экспортирующий словать с полем value.</p>
+    <p>Переписываем компоненты Enlarger и Reducer с использованием переменной value.</p>
+
+        <pre>
+        Листинг 7.22 globals.js
+        
+        module.exports={
+            value:0
+        };
+        </pre>
+        <pre>
+        Листинг 7.23 enlarger.vue
+
+        &lt;template&gt;
+            &lt;h1 v-on:mouseover="enlarge"&gt;{{ referenced.value }}&lt;/h1&gt;
+        &lt;/template&gt;
+        &lt;script&gt;
+            let globals=require("./globals.js");
+        
+            module.exports={
+                data: function() {
+                    return {referenced: globals};
+                },
+                methods: {
+                    enlarge: function() {
+                        this.referenced.value+=1;
+                    }
+                }
+            };
+        &lt;/script&gt;
+        
+        Листинг 7.23 reducer.vue
+
+        &lt;template&gt;
+            &lt;button type="button" v-on:click="reduce"&gt;{{ referenced.value }}&lt;/button&gt;
+        &lt;/template&gt;
+        &lt;script&gt;
+            let globals=require("./globals.js");
+            module.exports={
+                data: function() {
+                    return {referenced: globals};
+                },
+            methods: {
+                reduce: function() {
+                    this.referenced.value-=1;
+                }
+            }
+        };
+        &lt;/script&gt;
+        </pre>
+
+    <footer>
+        <center>
+        <a href="79.html">Назад</a>&nbsp;|&nbsp;<a href="homework.html">Вперед</a>
+        </center>
+    </footer>
+</body>
+</html>

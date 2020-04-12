@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 7</title>
+    
+</head>
+<body>
+    
+    <p><strong>7.4 Функциональность</strong></p>
+
+    <p><i>7.4.4 append и prepend</i></p>
+    <p>Функция <b>append</b> добавляет содержимое в конец элементов, а <b>prepend</b> - в начало.</p>
+    
+    <ul class="list">
+        <li>Первый исходный элемент</li>
+        <li>Второй исходный элемент</li>
+    </ul>
+    <button type="button" id="append">Добавить в конец</button>
+    <button type="button" id="prepend">Добавить в начало</button>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $("#append").on("click", function() {
+            $(".list").append("<li>Элемент в конце</li>");
+        });
+        $("#prepend").on("click", function() {
+            $(".list").prepend("<li>Элемент в начале</li>");
+        });
+    </script>
+    
+    <pre>
+        Листинг 7.5 body (index.html)
+
+        &lt;button type="button" id="append"&gt;Добавить в конец&lt;/button&gt;
+        &lt;button type="button" id="prepend"&gt;Добавить в начало&lt;/button&gt;
+        &lt;script src="https://code.jquery.com/jquery-3.3.1.min.js"&gt;&lt;/script&gt;
+        &lt;script&gt;
+            $("#append").on("click", function() {
+                $(".list").append("&lt;li&gt;Элемент в конце&lt;/li&gt;");
+            });
+            $("#prepend").on("click", function() {
+                $(".list").prepend("&lt;li&gt;Элемент в начале&lt;/li&gt;");
+            });
+        &lt;/script&gt;
+            
+     </pre>
+    
+    
+    <footer>
+        <center>
+        <a href="75.html">Назад</a>&nbsp;|&nbsp;<a href="77.html">Вперед</a>
+        </center>
+    </footer>  
+    
+</body>
+</html>

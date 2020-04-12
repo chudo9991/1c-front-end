@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 7</title>
+</head>
+<body>
+    <p><b>7.1.4 Создание модулей</b></p>
+    <p>Все переменные и функции модуля по умолчанию являются <i>локальными</i>. Для создания экспортируемого объекта возвращаемого функцией <b>require</b>, используют переменную <b>module.exports.</b></p>
+    
+    <p>Приведем пример.</p>
+       
+    <pre>
+        Листинг 7.4 dependency.js
+
+        function f(x) {
+            ...
+        }
+        module.exports = {
+            act: f
+        };
+        
+        Листинг 7.5. main.js 
+        
+        let dependency=require("/.dependency.js");
+
+        ... 
+        dependency.act(42);
+    </pre>
+    
+    <footer>
+        <center>
+        <a href="73.html">Назад</a>&nbsp;|&nbsp;<a href="75.html">Вперед</a>
+        </center>
+    </footer>
+</body>
+</html>

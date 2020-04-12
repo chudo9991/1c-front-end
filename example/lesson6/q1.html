@@ -7,17 +7,26 @@
 <body>
     <div id="app">
         X^2+
-        <input type="number" v-model.number="b" v-on:keydown.enter="calc">
+        <input type="number" v-model.number="b" v-on:keydown.enter="sol">
         *X+
-        <input type="number" v-model.number="c" v-on:keydown.enter="calc">
+        <input type="number" v-model.number="c" v-on:keydown.enter="sol">
         =0
         <p>D={{ D }}</p>
         <p>Решения: {{ x1 }}, {{ x2 }}</p>
-       
-        
-    </div>
+        <script>
+            b= vm.b;
+            c= vm.c;
 
-    <div id="plot">
+            console.log(b,c);
+
+            functionPlot ({
+                target: "#plot",
+                data: [{
+                    fn: "x^2+"+ String(b) +"*x+" +String(c)
+                }],
+                grid: true
+            });
+        </script>
     </div>
 
     <script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
@@ -26,15 +35,15 @@
     <script src="q1.js"></script>
     
   
-        <script>
-            functionPlot ({
-                target: "#plot",
-                data: [{
-                fn: "x^2+4*x-1"
-                }],
-                grid: true
-            });
-        </script>
+<!--        <script>-->
+<!--            functionPlot ({-->
+<!--                target: "#plot",-->
+<!--                data: [{-->
+<!--                fn: "x^2+4*x-1"-->
+<!--                }],-->
+<!--                grid: true-->
+<!--            });-->
+<!--        </script>-->
   
 
     <footer>

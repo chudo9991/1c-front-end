@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 7</title>
+</head>
+<body>
+    <p><b>7.2.6 Сообщения</b></p>
+    <p>На самом деле команда <b>v-model</b> для текстовых полей представляет собой комбинацию из <b>v-bind:value и v-on:input</b>.</p>
+    <p>Заменим строку из листинга 7.13 листингом 7.15 и увидим, что поведение программы не изменится. Наше сообщение не передается.</p>
+          
+        <pre>
+        Листинг 7.15 app.vue
+            &lt;p&gt;
+                &lt;input type="text" v-bind:value="pText" v-on:input="pText = $event.target.value"&gt;
+            &lt;/p&gt;
+        </pre>
+        <pre>
+        Листинг 7.13 app.vue
+
+            &lt;p&gt;
+                &lt;input type="text" v-model="pText"&gt;
+            &lt;/p&gt;
+    </pre>
+    <ul>
+        <li><b>v-bind:value</b> обновляет атрибут <i>value</i> (содержимое поля) при изменении параметра pText;</li>
+        <li><b>v-on:input</b> при возникновении события <i>input</i> (при изменении содержимого поля) присваивает значение value переменной pText.</li>
+    </ul>
+    
+    <p>Однако, вместо явного присвоения в обработчике <b>v-on:input</b> мы можем вызвать соственную функцию, объявив ей в словаре <b>methods</b>. В ней для отправки сообщений родительской компоненте можно использовать метод <b>$emit</b>.</p>
+    <p>Внесем изменения в <i>par-cap.vue</i></p>
+    <p>Добавим обработку сообщений update от компоненты ParCap в главной компоненте <i>app.vue</i> при помощи директивы <b>v-on</b>.</p>
+    <pre>
+        Листинг 7.16 par-cap.vue 
+
+        &lt;style scoped&gt;
+            div {
+                display: inline-block;
+                background: yellow;
+            }
+        &lt;/style&gt;
+        
+        &lt;template&gt;
+            &lt;div&gt;
+                &lt;p&gt;par-cap.vue&lt;/p&gt;
+                &lt;p&gt;{{ pText.toUpperCase() }}&lt;/p&gt;
+                &lt;p&gt;&lt;input type="text" v-bind:value="pText" v-on:input="send"&gt;&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/template&gt;
+        
+        &lt;script&gt;
+            module.exports = {
+                props: ["pText"],
+                methods: {
+                    send: function(event) {
+                        this.$emit("update", event.target.value);
+                    }
+                }
+            };
+        &lt;/script&gt;
+    </pre>
+    <pre>
+        Листинг 7.17 app.vue
+
+        &lt;template&gt;
+            &lt;div&gt;
+                &lt;p&gt;App.vue&lt;/p&gt;
+                &lt;p&gt;&lt;input type="text" v-model="message"&gt;&lt;/p&gt;
+                &lt;!-- &lt;p&gt;&lt;input type="text" v-bind:value="pText" v-on:input="pText = $event.target.value"&gt;&lt;/p&gt; --&gt;
+                &lt;par-cap v-bind:p-text="message" v-on:update="recive"&gt;&lt;/par-cap&gt;
+            &lt;/div&gt;
+        &lt;/template&gt;
+        &lt;script&gt;
+            let ParCap=require("./par-cap.vue")
+            
+            module.exports={
+                data: function() {
+                    return {message: "Hello, component!"};
+                },
+                components: {
+                    parCap: ParCap
+                },
+                methods: {
+                    recive: function(value) {
+                        this.message=value;
+                    }
+                }
+            };
+        &lt;/script&gt;
+        </pre>
+    <p><b>Как это работает?</b>
+        <p>Обратите внимание, что второй аргумент вызова $emit передается в объявленную нами recive в качестве первого аргумета. Можно передавать и больше параметров!</p>
+        <ol>
+            <li>В поле компоненты ParCap пользователь нажимает клавишу</li>
+            <li>Вызывается функция send</li>
+            <li>Посылается сообщение update</li>
+            <li>В компоненте App принимается сообщение update</li>
+            <li>Обновляется переменная message</li>
+            <li>Следом обновляется параметр pText</li>
+            <li>В компоненте ParCap изменяется содержимое поля</li>
+        </ol>
+    </p>
+    <footer>
+        <center>
+        <a href="77.html">Назад</a>&nbsp;|&nbsp;<a href="79.html">Вперед</a>
+        </center>
+    </footer>
+</body>
+</html>
