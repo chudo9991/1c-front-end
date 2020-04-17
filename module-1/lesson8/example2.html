@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Список дел</title>
+</head>
+<body>
+    <style>
+        #container {
+            display: table; 
+            margin: 0 auto; 
+            text-align: center;          
+        }
+    </style>
+
+    <div id="container">
+        <div>
+            <h1>Список дел</h1>            
+            <ol class="list">
+            </ol>           
+        </div>
+        <div>
+            <input type="text" id="box">
+        </div>
+    </div>    
+        
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        var field=$("#box");
+        var text=field.val();
+          
+        $("#box").on("keydown", function(event){
+            
+            if (event.which===13) {
+                text="<li>"+String(field.val())+"</li>";
+                $(".list").append(text);
+                field.val("");
+            };
+
+            $("li").on("click", function(){
+                $(this).remove();
+                console.log("click!");
+            });
+        });        
+    </script>
+    <footer id="container">
+        <h1><a href="81.html">Назад</a></h1>
+    </footer>      
+</body>
+</html>

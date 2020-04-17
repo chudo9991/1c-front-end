@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 8</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <p><b>8.3 Функциональность</b></p>
+    <p><b>8.3.6 Модальное окно</b></p>
+    <p>Класс <b>-fade</b> добавляет анимации при появлении и исчезании. Атрибут <b>data-dissmiss</b> в значении <i>modal</i> указывает, что данный элемент используется для закрытия. Функция <b>modal</b> принимает "show" или "hide", показывая или скрывая окно.</p>
+    
+    
+        <div id="window" class="modal fade" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Заголовок</h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Содержимое</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">
+                            Закрыть
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                            Сохранить
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" id="launcher" class="btn btn-link">
+            Запустить модальное окно
+        </button>
+    
+    
+    <pre>
+
+    Листинг 8.4 index.html
+
+    &lt;body&gt;
+        &lt;div id="window" class="modal fade" tabindex="-1"&gt;
+            &lt;div class="modal-dialog"&gt;
+                &lt;div class="modal-content"&gt;
+                    &lt;div class="modal-header"&gt;
+                        &lt;h5 class="modal-title"&gt;Заголовок&lt;/h5&gt;
+                        &lt;button type="button" class="close" data-dismiss="modal"&gt;
+                            &times;
+                        &lt;/button&gt;
+                    &lt;/div&gt;
+                    &lt;div class="modal-body"&gt;
+                        &lt;p&gt;Содержимое&lt;/p&gt;
+                    &lt;/div&gt;
+                    &lt;div class="modal-footer"&gt;
+                        &lt;button type="button" class="btn btn-light" data-dismiss="modal"&gt;
+                            Закрыть
+                        &lt;/button&gt;
+                        &lt;button type="button" class="btn btn-primary"&gt;
+                            Сохранить
+                        &lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;button type="button" id="launcher" class="btn btn-link"&gt;
+            Запустить модальное окно
+        &lt;/button&gt;
+    &lt;script src="https://code.jquery.com/jquery-3.3.1.min.js"&gt;&lt;/script&gt;
+    &lt;script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+        $("#launcher").on("click", function() {
+            $("#window").modal("show");
+         });
+    &lt;/script&gt;
+    &lt;/body&gt;
+    </pre>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        $("#launcher").on("click", function() {
+            $("#window").modal("show");
+         });
+    </script>
+    <footer class="blue-footer">        
+        <a href="89.html">Назад</a>&nbsp;|&nbsp;<a href="811.html">Вперед</a>
+    </footer>  
+</body>
+</html>

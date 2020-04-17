@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Головоломка</title>
+</head>
+
+<body>
+
+    <style>
+        #container {
+            display: table; 
+            margin: 0 auto; 
+            text-align: center;
+        }
+        .block {
+            width: 150px;
+            height: 50px;
+            margin: 10px;
+            border-radius: 10px;
+            background-color: black;
+        }
+        
+        .block--lit {
+            width: 150px;
+            height: 50px;
+            margin: 10px;
+            border-radius: 10px;
+            background-color: yellow;
+        }
+    </style>
+
+    <div id="container">
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block--lit"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+    </div>    
+        
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+
+        $(".block, .block--lit").on("click", function(){
+            if ($(this).siblings().hasClass("block")) {
+                    $(this).siblings().toggleClass("block--lit");
+            } else { $(this).siblings().toggleClass("block--lit"); };
+            if ($(this).siblings().hasClass("block--lit")) {
+                    $(this).siblings().toggleClass("block");
+            } else { $(this).siblings().toggleClass("block"); };
+        });
+    </script>
+
+    <footer id="container">
+        <h1><a href="81.html">Назад</a></h1>
+    </footer>      
+</body>
+</html>

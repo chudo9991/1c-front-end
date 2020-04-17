@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 8</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <p><b>8.1 Предпосылки</b></p>
+    <p>Для оформления внешнего вида страниц существуют различные библиотеки. Одной из популярных является <b>Bootstrap</b>. Что есть <a href="https://geekbrains.ru/posts/5_css_frameworks">ещё</a>? Можно спросить Гугл про "CSS framework".</p>
+    <p><b>Bootstrap</b> предоставляет множество часто используемых визуальных элементов. Некоторые мы рассмотрим на сегодняшнем занятии.</p>
+    <p><b>8.1 Подключение</b></p>
+    <p>Чтобы начать работу с Bootstrap необходимо подключить файлы для CSS и JavaScript. А также нам понадобиться подключить JQuery.</p>
+    <p>Вот <a href="https://getbootstrap.com/docs/getting-started">ссылка</a> на актуальную версию. На сегодняшний день это 4.4.1</p>
+    <p>Порядок подключения, как и в случае со скриптами ВАЖЕН!</p>
+    <p>Если 2 каких-либо правила подходят к одному элементу и имеют одинаковую специфичность, то будет применено то, которое объявлено последним.</p>
+    <p><i>Значит, библиотечные стили (Bootstrap) должны подключаться РАНЬШЕ, чем написанные вами.</i></p>
+    <pre>
+    Листинг 8.1 Подключение (index.html)    
+        &lt;!DOCTYPE html&gt;
+        &lt;html lang="ru"&gt;
+        &lt;head&gt;
+            &lt;meta charset="uft-8"&gt;
+            &lt;title&gt;Это заготовки&lt;/title&gt;
+            &lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"&gt;
+            &lt;link rel="stylesheet" href="style.css"&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+    
+            &lt;!-- Здесь будет наш HTML-код! --&gt;
+
+            &lt;script src="https://code.jquery.com/jquery-3.3.1.min.js"&gt;&lt;/script&gt;
+            &lt;script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"&gt;&lt;/script&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+    </pre>
+
+    <footer class="blue-footer">        
+        <a href="81.html">Назад</a>&nbsp;|&nbsp;<a href="83.html">Вперед</a>
+    </footer>  
+</body>
+</html>

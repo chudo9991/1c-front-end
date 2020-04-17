@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 8</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <p><b>8.3 Функциональность</b></p>
+    <p><b>8.3.1 Разметка</b></p>
+    <p>При верстке часто требуется упорядочить части страницы (элементы) в соответствии с некоторой сеткой. Для решения этой задачи Bootstrap предлагает всё пространство страницы разделить на строки, внутри которых расположение содержимого будет определяться размерами столбцов. Все строки обязаны распологаться в контейнере, причем и контейнер, и строки со столбцами должны быть блоками <b>div</b>.</p>
+    <p>Для реализации элементов разметки существуют различные классы, но мы будем использовать следующие:
+        <ul>
+            <li><b>container-fluid</b> для контейнеров</li>
+            <li><b>row</b> для строк</li>
+            <li><b>col-md-*</b> для столбцов, где вместо * стоит число от 1 до 12, означающее, что столбец должен занимать */12 от доступной ширины.</li>
+            <li><b>offset-md-*</b> для создания отступов, где вместо * стоит число от 1 до 12, означающее количество пропущенных столбцов</li>
+        </ul>
+    </p>
+    <p>Хорошая статья - <a href="https://medium.com/@stasonmars/%D1%81%D0%B5%D1%82%D0%BA%D0%B0-%D0%B2-bootstrap-4-%D0%BF%D0%BE%D0%B4%D1%80%D0%BE%D0%B1%D0%BD%D0%BE%D0%B5-%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE-bb20ce8a14ad" target="blank">здесь</a>.</p>
+    <div class="image-center">
+        Классическая сетка Bootstrap<br>
+        <img src="img/bootstrap-grid-clasic.png"><br>
+        Ещё пример блоков Bootstrap<br>
+        <img src="img/bootstrap-grid.png"><br>
+    </div>  
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <footer class="blue-footer">        
+        <a href="82.html">Назад</a>&nbsp;|&nbsp;<a href="84.html">Вперед</a>
+    </footer>  
+</body>
+</html>
