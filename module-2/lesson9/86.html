@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Занятие 8</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="text-left">
+        <h3>9.2. Запускаем приложение. Проверяем.</h3>
+        <ul>
+            <li>Выполняем в Powershell (окно для клиента): <b>browserify main.js --outfile bundle.js --transform vueify</b></li>
+            <li>Выполняем в Powershell (окно для сервера): <b>node index.js</b>. Сервер не останавливаем!</li>
+        </ul>
+        <p>Давайте убедимся, что всё работает. Откроем браузер и перейдем по адресу "<b>http://localhost/#/register</b>".</p>
+        <div class="text-center mb-3">Увидим вот такую картинку.<br><img width="450px" src="img/5.png"></div>
+        <p>Внесем данные пользователя. Нажмем кнопку "Зарегистрироваться!". Теперь в программе <b>MongoDB Compass</b> мы выбираем пункт <br> меню "Connect-&gt;Connect-to...". В коллекции "photofeed" видим всех наших зарегистрированных пользователей.</p>
+        <div class="text-center mb-3">Это выглядит вот так.<br><img width="950px" src="img/6.png"></div>
+    </div>
+    <div class="text-center"><h3>Наш модуль отлично работает!</h3></div>
+            
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <footer class="blue-footer">        
+        <a href="85.html">Назад</a>&nbsp;|&nbsp;<a href="87.html">Вперед</a>
+    </footer>  
+</body>
+</html>

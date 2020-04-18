@@ -1,0 +1,23 @@
+html, body, .page {
+    margin: 0;
+    height: 100%;
+}
+
+.focus {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.focus__holder {
+    width: 50%;
+    max-width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.focus__holder > * {
+    margin: 5px;
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Занятие 8</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="text-left">
+        <h3>9.2 Регистрация</h3>
+        <p>Обратите внимание, модули vue-resource и vue-jwt-mongo мы установили на шаге 1.</p>
+        <p>Добавим обработку запросов регистрации новых пользователей</p>
+        <ul>
+            <li>Листинг 9.1 перенесем в <i>index.js</i> в папке <b>server</b>.</li>
+            <li>Листинг 9.2 перенесем в <i>main.js</i> в папке <b>client</b>.</li>
+        </ul>
+        <p>При нажатии кнопки "Зарегистрироваться!" функиця <b>$auth.register</b> возвращает объект-обещание, имеющий методы <i>then</i> и <i>catch</i>. Первый добавляет обработчик успешного завершения, а второй - неудачного.</p>
+        <p>Процедура аутентифтикации <b>$auth.register</b> устроена аналогично процедуре регистрации.</p>
+        <p>Если сервер успешно сохранил переданные ему данные, мы получим зашифрованную строку-подпись, позволяющая серверу однозначно определять по ней пользователя в течении недели.</p>
+        <p>В компоненте <b>feed</b> при нажатии кнопки "Выйти" должна вызываться функция <b>$auth.logOut</b>.</p>
+        <pre>
+            Листинг 9.1 index.js
+
+            var express = require("express"),
+            vjm = require("vue-jwt-mongo"),
+            multer = require("multer"),
+            mongoClient = require("mongodb").MongoClient;
+
+            var mongoUrl = "mongodb://localhost/photofeed";
+
+            var app = express();
+            var vjmServer = vjm.Server({
+            mongoUrl: mongoUrl,
+            jwtSecret: "oFZ45jlpav803qUo3"
+            });
+            var upload = multer({ dest: "../public/uploads" });
+            var database;
+
+            app.use(express.static("../client"));
+            app.use(express.static("../public"));
+
+            app.post("/auth/register", vjmServer.registerHandler);
+            
+            app.post("upload", [vjmServer.jwtProtector, upload.single("image")],
+                function(request, response) {
+                    database.collection("uploads").insert({
+                        user: request.user.username,
+                        image: request.file.filename,
+                        data: new Data()
+                    });
+                response.sendStatus(200);
+                }
+            );
+
+            app.get("/feed", vjmServer.jwtProtector, function(request, response) {
+                database.collection("uploads").find()
+                    .sort({ date: -1 })
+                    .limit(10)
+                    .toArray(function(err, documents) {
+                        response.json(documents);
+                    });
+            });
+
+            mongoClient.connect(mongoUrl, function(err, db) {
+                database = db;
+                app.listen(80);
+            });
+        </pre>
+        <pre>
+            Листинг 9.2 main.js
+
+            var Vue = require("vue"),
+            VueResource = require("vue-resource"),
+            VueRouter = require("vue-router"),
+            VueJwtMongo = require("vue-jwt-mongo");
+
+            var App = require("./app.vue");
+
+            var Index = require("./components/index.vue"),
+            Register = require("./components/register.vue"),
+            Login = require("./components/login.vue"),
+            Feed = require("./components/feed.vue"),
+            Upload = require("./components/upload.vue");
+
+            Vue.use(VueResource);
+            Vue.use(VueJwtMongo.Client);
+            Vue.use(VueRouter);
+
+            var router = new VueRouter({
+                routes: [
+                    { path: "/", component: Index },
+                    { path: "/register", component: Register },
+                    { path: "/login", component: Login },
+                    { path: "/feed", component: Feed },
+                    { path: "/upload", component: Upload }
+                    ]
+            });
+
+            var vm = new Vue({
+                el: "#root",
+                router: router,
+                render: function(createElement) {
+                    return createElement(App);
+                }
+            });
+        </pre>
+    </div>
+            
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <footer class="blue-footer">        
+        <a href="84.html">Назад</a>&nbsp;|&nbsp;<a href="86.html">Вперед</a>
+    </footer>  
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Занятие 8</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="col-md-6 offset-md-3 text-center mb-3">
+        <h1>Фотолента. Аутентификация.</h1>
+    </div>
+    <div class="col-md-12">
+        <p>С этого занятия мы приступим к  созданию приложения Vue.js для обмена фотографиями, которое будет нашим итоговым проектом. Начнем с системы аутентификации (вход по логину и паролю).</p>
+    </div>
+    <div class="text-left">
+        <h3>9.1 Старт</h3>
+        <p>Сейчас мы по шагам запустим сервер на Express Node.js, который будет присылать нам стратическую страницу.</p>
+        <ol>
+            <li>В папке вашего проекта (например <b>Photo</b>) создайте папки <b>client</b> и <b>server</b>.</li>
+            <li>Поместите файл <i>index.html</i> в папку <b>client</b> c листингом 1. В <i>index.html</i> нужно сверстать приветственную надпись. Рекомендую использовать <b>Bootstrap</b>.</li>
+            <li>В папку <b>server</b> кладем файл <i>index.js</i> с листингом 2. Внимание! В коде index.js путь к файлу <i>index.html</i> нужно прописать полностью от корня диска.</li>
+            <li>Запускаем 2 экземпляра Powershell. В одном будем работать с сервером, в другом с клиентом.</li>
+            <li>Последовательно выполняем эти команды в Powershell (окно для сервера):
+                <ul>
+                    <li>Set-ExecutionPolicy RemoteSigned -Scope Process - разрешаем исполнять скрипты</li>
+                    <li>Переходим в папку <b>server</b> с помощью <b>cd</b>.</li>
+                    <ul>
+                        <li>Устанавливаем Express: npm install express --save</li>
+                        <li>Устанавливаем CORS: npm install cors --save</li>
+                        <li>Устанавливаем JQuery: npm install jquery --save</li>
+                        <li>Устанавливаем WebSocket: npm install ws --save</li>
+                    </ul>
+                </ul>
+            <li>Последовательно выполняем эти команды в Powershell (окно для клиента):
+                <ul>
+                    <li>Set-ExecutionPolicy RemoteSigned -Scope Process - разрешаем исполнять скрипты</li>
+                    <li>Переходим в папку <b>client</b> с помощью <b>cd</b>.</li>
+                    <ul>
+                        <li>Устанавливаем Vue.js: npm install vue --save</li>
+                        <li>Устанавливаем модули необходимые для сборки компонентов: npm install vueify vue-hot-reload-api babel-core babel-preset-es2015 babel-runtime babel-plugin-transform-runtime --save-dev</li>
+                        <li>Устанавливаем маршрутизатор Vue: npm install vue-router --save</li>
+                        <li>Устанавливаем библиотеку vue-jwt-mongo: npm install vue-jwt-mongo --save</li>
+                        <li>Устанавливаем vue-resource для отправки http-запросов: npm install vue-resource --save</li>
+                        <li>Устанавливаем модуль Multer (для загрузки файлов): npm install --save multer</li>
+                    </ul>
+                </ul>
+            </li>
+            <li>В окне клиента запускаем <b>browserify main.js --outfile bundle.js --transform vueify</b></li>
+            <li>В окне сервера запускаем <b>node index.js</b></li>
+            <li>В браузере заходим по адресу <b>http://localhost/</b> и видим вот такую страницу.</li>
+        </ol>
+        <img src="./img/1.PNG">
+    </div>
+    <div class="offset-md-1 col-md-10 text-left">
+        <hr>
+        <pre>
+        Листинг 1 index.html
+        
+        &lt;!DOCTYPE html&gt;
+        &lt;html lang="ru"&gt;
+        &lt;head&gt;
+            &lt;meta charset="utf-8"&gt;
+            &lt;title&gt;Фотолента&lt;/title&gt;
+            &lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;div id="root"&gt;&lt;h1&gt;Приветственная страница!!!&lt;/h1&gt;&lt;/div&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+        </pre>
+        <hr>
+        <pre>
+        Листинг 2 index.js
+        
+        var express = require("express");
+        var app = express();
+ 
+        app.use(function (request, response) {
+        response.sendFile("C:/Users/Алексей/Documents/GitHub/1c-front-end/module-2/lesson9/Photo/client/index.html");
+        });
+ 
+        app.listen(80);
+    </pre>
+    <hr>
+    </div>
+        
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <footer class="blue-footer">        
+        <a href="81.html">Назад</a>&nbsp;|&nbsp;<a href="84.html">Вперед</a>
+    </footer>  
+</body>
+</html>
