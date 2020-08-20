@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 11</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h3>11.5 Логика</h3>
+    <h3>11.5.1 Позиция свободной ячейки</h3>
+    <p>Создаем глобальный объект freeCell со свойствами x и y, обозначающими позицию свободной ячейки.</p>
+    <p>Поскольку изначально свободная ячейка должна находиться в правом нижнем углу, freeCell изначально должен хранить его координаты, то есть {x: 3, y: 3}.</p>
+    <pre>
+        Листинг script.js 
+
+        var tiles = [];
+        var freeCell = {
+            y: 3,
+            x: 3
+        };
+
+        ...
+        ... 
+  
+    </pre>
+    <h3>11.5.2 between</h3>
+    <p>Напишем функцию between, принимающую аргументы a,b,t. Она должна возвращать true, если t между a и b. Иначе - false.</p>
+    <pre>
+        Листинг script.js 
+        
+        function between(a, b, t) {
+            return a &lt;= t && t &lt;= b || b &lt;= t && t &lt;= a;
+        }
+
+    </pre>
+
+    <h3>11.5.3 tileClick</h3>
+    <p>Используя between и алгоритм ниже, напишем функцию обратного вызова tileClick, принимающую аргумент event.</p>
+    <p>
+        <h4>11.5.3.1 Алгоритм на естественном языке</h4>
+        <ol>
+            <li>Сохранить нажатую игровую ячейку (event.target) в переменную bar</li>
+            <li>Если нажатая ячейка находится в ОДНОЙ СТРОКЕ со свободной ячейкой:
+                <ol>
+                    <li>для каждой ячейки tile из массива tiles:
+                        <ol>
+                            <li>если текущая ячейка находится между нажатой и свободной ячейками:
+                                <ol>
+                                    <li>если свободная ячейка находится справа, увеличить tile.x на единицу</li>
+                                    <li>Если свободная ячейка находится слева, уменьшить tile.x на единицу</li>
+                                    <li>обновить положение текущей ячейки с помощью setCellOffset</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        установить позицию свободной ячейки равной <b>старой</b> позиции нажатой ячейки
+                    </li>
+                </ol>
+            </li>
+            <li>
+                если нажатая ячейка находится в ОДНОV СТОЛБЦЕ со свободной ячейкой: аналогично для tile.y
+            </li>
+        </ol>
+    </p>
+    <p>
+        <h4>11.5.3.2 Алгоритм в терминах программы</h4>
+        <ol start="2">
+            <li>
+                если bar.y равно freeCell.y: 
+                <ol>
+                    <li>
+                        ...: 
+                        <ol>
+                            <li>
+                                если (tile.y равно bar.y) и (tile.x между bar.x и freeCall.x):
+                                <ol>
+                                    <li>если bar.x меньше freeCell.x: увеличить tile.x на 1</li>
+                                    <li>иначе: уменьшить tile.x на 1</li>
+                                    <li>...</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </li>
+        </ol>
+    </p>
+    <pre>
+        function tileClick(event) {
+            var bar = event.target,
+                i, tile;
+            /* запоминаем старые координаты каждой ячейки */
+            var oldX = bar.x,
+                oldY = bar.y;
+            if (bar.y == freeCell.y) {
+                for (i = 0; i < tiles.length; ++i) {
+                    tile = tiles[i];
+                    if (tile.y == bar.y && between(bar.x, freeCell.x, tile.x)) {
+                        if (bar.x < freeCell.x) tile.x += 1;
+                        else tile.x -= 1;
+                        setCellOffset(tile);
+                    }
+                }
+                freeCell = {
+                    y: oldY,
+                    x: oldX
+                };
+            } else if (bar.x == freeCell.x) {
+                for (i = 0; i < tiles.length; ++i) {
+                    tile = tiles[i];
+                    if (tile.x == bar.x && between(bar.y, freeCell.y, tile.y)) {
+                        if (bar.y < freeCell.y) tile.y += 1;
+                        else tile.y -= 1;
+                        setCellOffset(tile);
+                    }
+                }
+                freeCell = {
+                    y: oldY,
+                    x: oldX
+                };
+            }
+        }
+    </pre>
+    <p><a href="./ex2/index4.html" target="blank">Пример</a></p>
+
+    <p style="color: #00cc00;">Задание для самостоятельной работы!
+        <ul>
+            <li>Переноси код в script.js</li>
+            <li>Покажи результат преподавателю через Light Manager</li>
+        </ul>
+    </p>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <footer class="blue-footer">        
+        <a href="116.html">Назад</a>&nbsp;|&nbsp;<a href="118.html">Вперед</a>
+    </footer>  
+</body>
+</html>

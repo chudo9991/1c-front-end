@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 11</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h3>11.4 События</h3>
+    <p>Создаем глобальный массив tiles. Модифицируем createTiles так, чтобы после её выполнения массив содержал все игровые ячейки.</p>
+    <p>Напишем функцию animateTiles, добавляющую пустой обработчик событий click с именем tileClick ко всем элементам из массива tiles.</p>
+    <pre>
+        Листинг script.js 
+
+        var tiles = [];
+
+        ...
+        ... 
+
+        function createTiles() {
+            var x, y, cell, n;
+            for (y = 0; y &lt; 4; ++y) {
+                for (x = 0; x &lt; 4; ++x) {
+                    n = y * 4 + x + 1;
+                    /* всего костяшек должно быть 15 */
+                    if (n &lt; 16) {
+                        cell = createCellTile();
+                        cell.y = y;
+                        cell.x = x;
+                        cell.innerHTML = n;
+                        setCellOffset(cell);
+                        appendCell(cell);
+                        /* добавляет костяшку в массив */
+                        tiles.push(cell);
+                    }
+                }
+            }
+        }
+
+        function animateTiles() {
+            var i;
+            for (i = 0; i &lt; tiles.length; ++i) {
+                tiles[i].addEventListener("click", tileClick);
+            }
+        }
+
+        createField();
+        createTiles();
+        animateTiles(); // Добавили!
+
+    </pre>
+    
+    
+
+    <!-- <p><a href="./ex2/index3.html" target="blank">Пример</a></p> -->
+
+    <p style="color: #00cc00;">Задание для самостоятельной работы!
+        <ul>
+            <li>Переноси код в script.js</li>
+            <li>Покажи результат преподавателю через Light Manager</li>
+        </ul>
+    </p>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <footer class="blue-footer">        
+        <a href="115.html">Назад</a>&nbsp;|&nbsp;<a href="117.html">Вперед</a>
+    </footer>  
+</body>
+</html>

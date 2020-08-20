@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 11</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h3>11.2.1 createCellNull</h3>
+    <p>Функция должна возвращать новый элемент div с классами field__cell и field__cell--null.</p>
+    <p>Обратите внимание, это словарь, т.е. пара ключ-значение!</p>
+
+    <pre>
+        Листинг 11.2.1 script.js
+
+        function createCellNull() {
+            var cell = document.createElement("div");
+            cell.classList.add("field__cell", "field__cell--null");
+            return cell;
+        }
+    </pre>
+    
+    <h3>11.2.2 setCellOffset</h3>
+    <p>Функция должна устанавливать положение переданного ей элемента при помощи стилевых свойств left и top.</p>
+    <p>Обратите внимание, что элементу cell мы устанавливали свойства x и y:</p>
+    <pre>
+        cell.y = y;
+        cell.x = x; 
+    </pre>
+    <p>Они обозначают номер строки и столбца при нумерации с 0. Их можно использовать для расчета положения по формулам:</p>
+    <pre>
+        left = offset + ( offset + width ) * x
+        top = offset + ( offset + height ) * y
+    </pre>
+    <p>Offset - расстояние между ячейками.</p>
+    
+    <pre>
+        Листинг 11.2.2 script.js
+
+        function setCellOffset(cell) {
+            /* + "px" необходимо, так как это значение своиства CSS */
+            cell.style.left = (15 + (15 + 81.25) * cell.x) + "px";
+            cell.style.top = (15 + (15 + 81.25) * cell.y) + "px";
+        }
+    </pre>
+    <h3>11.2.3 appendCell</h3>
+    <p>Функция должна добавлять переданный ей элемент к игровому полю.</p>
+    <pre>
+        Листинг 11.2.3 script.js
+
+        function appendCell(cell) {
+            var field = document.getElementById("field");
+            field.appendChild(cell);
+        }
+    </pre>
+
+    <p><a href="./ex2/index2.html" target="blank">Пример</a></p>
+
+    <p style="color: #00cc00;">Задание для самостоятельной работы!
+        <ul>
+            <li>Переноси код в script.js</li>
+            <li>Покажи результат преподавателю через Light Manager</li>
+        </ul>
+    </p>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <footer class="blue-footer">        
+        <a href="113.html">Назад</a>&nbsp;|&nbsp;<a href="115.html">Вперед</a>
+    </footer>  
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 11</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h3>11.3 Костяшки</h3>
+    <p>Создаем класс field__cell--tile для игровых ячеек. Центрирование чисел делаем через flexbox.</p>
+    <p>Напишем функцию createTiles, которая будет создавать костяшки. Она аналогичная createField. Создаваемые ячейки должны иметь классы field__cell и field__cell--tile.</p>
+    <p>Число на костяшке получаем по формуле: n = y * 4 + x + 1</p>
+    <pre>
+        Листинг 11.2.1 style.css
+
+        .field__cell--tile {
+            background-color: #3D1255;
+            color: white;
+            font-size: 42px;
+            font-weight: bold;
+        
+            /* центрирование числа на костяшке */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </pre>
+    <pre>
+        Листинг script.js 
+
+        function createCellTile() {
+            var cell = document.createElement("div");
+            cell.classList.add("field__cell", "field__cell--tile");
+            return cell;
+        }
+
+        function createTiles() {
+            var x, y, cell, n;
+            for (y = 0; y &lt; 4; ++y) {
+                for (x = 0; x &lt; 4; ++x) {
+                    n = y * 4 + x + 1;
+                    /* всего костяшек должно быть 15 */
+                    if (n &lt; 16) {
+                        cell = createCellTile();
+                        cell.y = y;
+                        cell.x = x;
+                        cell.innerHTML = n;
+                        setCellOffset(cell);
+                        appendCell(cell);
+                    }
+                }
+            }
+        }
+        
+        createField();
+        createTiles(); // Добавили!
+    </pre>
+    
+    
+
+    <p><a href="./ex2/index3.html" target="blank">Пример</a></p>
+
+    <p style="color: #00cc00;">Задание для самостоятельной работы!
+        <ul>
+            <li>Переноси код в script.js и style.css</li>
+            <li>Покажи результат преподавателю через Light Manager</li>
+        </ul>
+    </p>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <footer class="blue-footer">        
+        <a href="114.html">Назад</a>&nbsp;|&nbsp;<a href="116.html">Вперед</a>
+    </footer>  
+</body>
+</html>

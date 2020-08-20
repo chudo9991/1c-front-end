@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 11</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h3>11.2 Плитка</h3>
+    <p>Создаем класс field__cell, который будет использоваться как для фоновых, так и для игровых ячеек. Он должен задавать одинаковую ширину и высоту, а так же абсолютное позиционирование игрового поля.</p>
+    <p>Создаем класс field__cell--null, устанавливающий цвет фоновой ячейки.</p>
+    <p>Далее напишем функции creatrCellNull, setCellOffset и appendCell, необходимые для работы функции createField.</p>
+    <pre>
+        Листинг 11.1 script.js
+
+        function createField() { 
+            var x, y, cell; 
+            for(y = 0; y &lt; 4; ++y) { 
+                for(x = 0; x &lt; 4; ++x) { 
+                    cell = createCellNull(); 
+                    cell.y = y;
+                    cell.x = x; 
+                    setCellOffset(cell); 
+                    appendCell(cell); 
+                }
+            }
+        }
+        createField();
+    </pre>
+    <pre>
+        Листинг style.css
+
+        .field__cell {
+            width: 81.25px; 
+            height: 81.25px; 
+            position: absolute; 
+            border-radius: 3px; 
+            }
+        
+        .field__cell--null {
+            background-color: #764B8E; 
+        }        
+
+    </pre>
+    
+    <!-- <p><a href="./ex2/index2.html" target="blank">Пример</a></p> -->
+
+    <p style="color: #00cc00;">Задание для самостоятельной работы!
+        <ul>
+            <li>Переносим код в script.js и style.css</li>
+            <li>Покажите результат преподавателю через Light Manager</li>
+        </ul>
+    </p>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <footer class="blue-footer">        
+        <a href="112.html">Назад</a>&nbsp;|&nbsp;<a href="114.html">Вперед</a>
+    </footer>  
+</body>
+</html>
