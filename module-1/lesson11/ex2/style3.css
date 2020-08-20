@@ -1,0 +1,79 @@
+html, body { 
+    height: 100%; 
+    margin: 0; 
+} 
+
+body { 
+    /* центрирование игрового поля */ 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    font-family: Arial; 
+    } 
+
+.field { 
+    width: 400px; 
+    height: 400px; 
+    background-color: #9775AA; 
+    border-radius: 5px; 
+    position: relative;
+}
+
+.field__cell {
+    width: 81.25px; 
+    height: 81.25px; 
+    position: absolute; 
+    border-radius: 3px; 
+    }
+
+.field__cell--null {
+    background-color: #764B8E; 
+} 
+
+.field__cell--tile {
+    background-color: #3D1255;
+    color: white;
+    font-size: 42px;
+    font-weight: bold;
+
+    /* центрирование числа на костяшке */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*плавное перемещение костяшек*/
+    transition: left 0.5s ease, top 0.5s ease;
+}
+
+#modal { 
+    /* размеры равные размеру родителя, 
+    то есть игрового поля */ 
+    height: 100%; 
+    width: 100%; 
+    /* наследование радиуса границ */ 
+    border-radius: inherit; 
+    
+    /* невидимость */ 
+    visibility: hidden; 
+    opacity: 0; 
+    transition: opacity 1s ease; 
+    
+    /*вывод блока на передний план */ 
+    position: relative; 
+    z-index: 1; 
+    
+    /* центрирование сообщения */ 
+    display: flex; 
+    align-items: center;
+    justify-content: center; 
+    
+    /* цвета и размер шрифта */ 
+    background: rgba(0, 0, 0, 0.5); 
+    color: white; 
+    
+    font-size: 72px; 
+    }
+    
+#modal.modal--visible {
+    visibility: visible; 
+    opacity: 1;
+    }

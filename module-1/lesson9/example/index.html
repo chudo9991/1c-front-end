@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="uft-8">
+    <title>Это заготовки</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <style>
+        .outer {
+            border: 1px solid lightblue;
+            border-radius: lightgrey;
+            height: 200px;
+        }
+            
+        .inner {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+        }
+        
+        .inner--red { background-color: red;}
+        .inner--green { background-color: green; }
+        
+        .inner.inner--green {
+            position: relative;
+            left: -50px;
+            top: 50px;
+        }
+        
+        .inner.inner--red:active {
+            position: relative;
+            z-index: 1;
+        }
+        
+        </style>
+
+    <html></html>
+        
+    <div class="outer">
+            <div class="inner inner--red">
+            </div><div class="inner inner--green">
+            </div>
+        </div>
+    
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+</body>
+</html>

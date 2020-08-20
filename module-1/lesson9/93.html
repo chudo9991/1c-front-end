@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 9</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <h3>9.2.1 clear</h3>
+   <p>Рассмотрим пример.</p>
+   <style>
+    .outer {
+        border: 1px solid lightgrey;
+        border-radius: 10px;
+    }
+        
+    .inner {
+        float: left;
+        margin: 10px;
+        width: 100px;
+        height: 100px;
+    }
+    
+    .inner--red { background-color: red;  }
+    .inner--green { background-color: green; }
+    .inner--blue { background-color: blue; }
+    .inner--black { background-color: black; }
+    </style>
+
+    <div class="outer">
+        <div class="inner inner--red"></div>
+        <div class="inner inner--green"></div>
+        <div class="inner inner--blue"></div>
+        <div class="inner inner--black"></div>
+        <p>За садом находился у них большой лес, который был совершенно пощажен предприимчивым приказчиком, - может быть, оттого, что стук топора доходил бы до самых ушей Пульхерии Ивановны.</p>
+    </div>
+    <br><br>
+    <pre>
+        Листинг 9.3 index.html
+
+        &lt;style&gt;
+            .outer {
+                border: 1px solid lightgrey;
+                border-radius: 10px;
+            }
+                
+            .inner {
+                float: left;
+                margin: 10px;
+                width: 100px;
+                height: 100px;
+            }
+            
+            .inner--red { background-color: red;  }
+            .inner--green { background-color: green; }
+            .inner--blue { background-color: blue; }
+            .inner--black { background-color: black; }
+            &lt;/style&gt;
+        
+            &lt;div class="outer"&gt;
+                &lt;div class="inner inner--red"&gt;&lt;/div&gt;
+                &lt;div class="inner inner--green"&gt;&lt;/div&gt;
+                &lt;div class="inner inner--blue"&gt;&lt;/div&gt;
+                &lt;div class="inner inner--black"&gt;&lt;/div&gt;
+                &lt;p&gt;За садом находился у них большой лес, который был совершенно пощажен предприимчивым приказчиком, - может быть, оттого, 
+                что стук топора доходил бы до самых ушей Пульхерии Ивановны.&lt;/p&gt;
+            &lt;/div&gt;
+    </pre>
+    <p>Так как разноцветные блоки вынуты из потока, блок-контейнер по сути содержит только текст. Поэтому его высота равна высоте текста.</p>
+    <p>Для решения этой проблемы можно воспользоваться свойством <b>clear</b>, которое сдвигает элемент вниз, пока его левой (left) или правой (right) границы касаются элементы с float. Чтобы запретить касание с обеих сторон используется значение both. Добавим после абзаца пустой блок со свойством clear в значении both. Он расположится под разноцветными блоками, а блок-контейнер расширится, чтобы его вместить.</p>
+
+    <div class="outer">
+        <div class="inner inner--red"></div>
+        <div class="inner inner--green"></div>
+        <div class="inner inner--blue"></div>
+        <div class="inner inner--black"></div>
+        <p><i>За садом находился у них большой лес, который был совершенно пощажен предприимчивым приказчиком, - может быть, оттого, что стук топора доходил бы до самых ушей Пульхерии Ивановны.</i></p>
+        <div style="clear: both;"></div>
+    </div>
+
+    <br>
+    <p style="color: #00cc00;">Задание для самостоятельной работы!
+        <ul>
+            <li>Внесите изменения в листинг 9.3</li>
+            <li>Добавьте класс .one со свойством clear: both;</li>
+            <li>Добавьте пустой блок div класса .one после параграфа.</li>
+            <li>Покажите результат преподавателю через Light Manager.</li>
+        </ul>
+    </p>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <footer class="blue-footer">        
+        <a href="92.html">Назад</a>&nbsp;|&nbsp;<a href="94.html">Вперед</a>
+    </footer>  
+</body>
+</html>

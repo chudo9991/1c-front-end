@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 9</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <h3>9.3.3 absolute</h3>
+   <p>Работает так же, как absolute, но позиционирует элемент относительно окна. Таким образом реализованы окна в социальных сетях.</p>
+   
+   <style>
+    .body {
+        height: 200px;
+    }
+    .outer {
+        border: 1px solid lightblue;
+        border-radius: lightgrey;
+        height: 600px;
+    }
+        
+    .inner {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+    }
+    
+    .inner--red { background-color: red;}
+    .inner--green { background-color: green; }
+    
+    .inner:active {
+        position: absolute;
+        width: auto;
+        height: auto;
+        left: 0;
+        right: 0;
+        top: 100px;
+        bottom: 100px;
+    }
+    .inner.inner--red{
+        position: fixed;
+        bottom: 0;
+        right: 0;
+    }
+    </style>
+
+    <div class="outer">
+        <div class="inner inner--red">
+        </div><div class="inner inner--green">
+        </div>
+    </div>
+    <br>
+    <p>То, что вы видите на экране реализовано вот так:</p>
+    
+        <pre>
+        Листинг 9.9 index.html
+        
+        &lt;style&gt;
+            .body {
+                height: 200px;
+            }
+            .outer {
+                border: 1px solid lightblue;
+                border-radius: lightgrey;
+                height: 600px;
+            }
+            .inner {
+                display: inline-block;
+                width: 100px;
+                height: 100px;
+            }
+            .inner--red { background-color: red;}
+            .inner--green { background-color: green; }
+            .inner:active {
+                position: absolute;
+                width: auto;
+                height: auto;
+                left: 0;
+                right: 0;
+                top: 100px;
+                bottom: 100px;
+            }
+            .inner.inner--red{
+                position: fixed;
+                bottom: 0;
+                right: 0;
+            }
+            &lt;/style&gt;
+        
+            &lt;div class="outer"&gt;
+                &lt;div class="inner inner--red"&gt;
+                &lt;/div&gt;&lt;div class="inner inner--green"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        
+        </pre>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <footer class="blue-footer">        
+        <a href="96.html">Назад</a>&nbsp;|&nbsp;<a href="98.html">Вперед</a>
+    </footer>  
+</body>
+</html>

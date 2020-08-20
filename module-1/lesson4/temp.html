@@ -1,0 +1,88 @@
+<!DOCTYPE html> 
+<html> 
+ <head>
+    <meta charset="utf-8"> 
+    <title>Конвертор температур</title>
+        <style>
+            html, body {
+                height: 100%;
+                margin: 0;
+            }
+            
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            input[type="text"] {
+                border-radius: 5px;
+                border: 1px solid grey;
+                padding: 5px;
+                width: 100%;
+                box-sizing: border-box;
+                line-height: 1.14em;
+            }
+            
+            .conteiner {
+                transition: transform 0.5s ease;
+            }
+            
+            .conteiner:hover {
+                transform: scale(2);
+            }
+            
+            button {
+                background-color: #4D4DFF;
+                opacity: 0.7;
+                border: none;
+                color: white;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            
+            button:hover {
+                opacity: 0.8;
+            }
+            
+            button:active {
+                opacity: 1;
+            }
+        
+            #convert {
+                width: 25%;
+                margin-right: 10px;
+            }
+            
+            .container__result {
+                display: flex;
+                margin: 10px 0;
+            }
+            
+            *:focus {
+                outline: none;
+            }
+     </style>
+ </head>
+ <body>
+     <div class="conteiner">
+         <input type="text" id="celsius" placeholder="Температура в &#8451;">
+         <div class="container__result">
+             <button id="convert">в &#8457;!</button>
+             <input type="text" id="farenheit" disabled>
+         </div> 
+     </div>
+     <script>
+         var button = document.getElementById("convert");
+         var celsius = document.getElementById("celsius");
+         var farenheit = document.getElementById("farenheit");
+         
+         function convert() {
+             var temperature = Number(celsius.value);
+             farenheit.value = (9 / 5 * temperature) + 32;
+         }
+         
+         button.addEventListener("click", convert);
+     </script>
+ </body>
+</html> 

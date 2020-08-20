@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 12</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h3>12.2 Поздравительное сообщение</h3>
+    <p>Внутрь элемента <b>field</b> в <i>index.html</i> добавляем блок <b>div</b> с именем <i>"modal"</i>, содержащий текст поздравления.</p>
+    <p></p>
+    <pre>
+        Листинг index.html 
+
+        &lt;html&gt;
+            &lt;head&gt;
+                &lt;meta charset="utf-8"&gt; 
+                &lt;title&gt;Пятнашки&lt;/title&gt; 
+                &lt;link rel="stylesheet" href="style.css"&gt; 
+            &lt;/head&gt; 
+            &lt;body&gt; 
+                &lt;div class="field" id="field"&gt;
+                    &lt;div class="modal" id="modal"&gt;   &lt;!-- Добавили --&gt;
+                        Победа!
+                    &lt;/div&gt; 
+                &lt;/div&gt; 
+            &lt;script src="script.js"&gt;&lt;/script&gt; 
+            &lt;/body&gt; 
+        &lt;/html&gt;
+
+    </pre>
+    <p></p>
+    <pre>
+        Листинг style.css
+
+        #modal { 
+            /* размеры равные размеру родителя, 
+            то есть игрового поля */ 
+            height: 100%; 
+            width: 100%; 
+            /* наследование радиуса границ */ 
+            border-radius: inherit; 
+            
+            /* невидимость */ 
+            visibility: hidden; 
+            opacity: 0; 
+            transition: opacity 1s ease; 
+            
+            /*вывод блока на передний план */ 
+            position: relative; 
+            z-index: 1; 
+            
+            /* центрирование сообщения */ 
+            display: flex; 
+            align-items: center;
+            justify-content: center; 
+            
+            /* цвета и размер шрифта */ 
+            background: rgba(0, 0, 0, 0.5); 
+            color: white; 
+            
+            font-size: 72px; 
+            }
+            
+        #modal.modal--visible {
+            visibility: visible; 
+            opacity: 1;
+            }
+    </pre>
+
+
+    <p style="color: #00cc00;">Задание для самостоятельной работы!
+        <ul>
+            <li>Переносим код в index.html</li>
+            <li>Добавляем код в style.css</li>
+            <li>Показываем результат в Light Manager</li>
+            <li>При наступлении какого события нужно выводить сообщение о победе?</li>
+            <li>Ответ пишем в чат!</li>
+        </ul>
+    </p>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <footer class="blue-footer">        
+        <a href="114.html">Назад</a>&nbsp;|&nbsp;<a href="116.html">Вперед</a>
+    </footer>  
+</body>
+</html>

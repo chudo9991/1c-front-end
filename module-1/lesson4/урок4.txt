@@ -1,0 +1,152 @@
+4.3.1 ПЕРЕМЕННЫЕ
+
+// арефметические действия с переменными
+var a, b, c;
+a = 3;
+b = 0.5;
+c = 2 * ( a / 2 + b )- 0.2;
+
+3.8   // ответ
+
+
+// складываем строки
+var firstName = "Jone", lastName = "Doe";
+fullName = firstName + " " + lastName;
+
+"Jone Doe" // ответ
+
+***
+
+4.3.2 DOM - ОБЪКТНАЯ МОДЕЛЬ ДОКУМЕНТА
+
+// Задаем для кнопки ковертора (Файл 4.2) атрибут id в значение convert и сохраняем в переменную node и вызываем эту переменную
+var node = document.getElementById("convert");
+node
+
+<button id="convert">в 'F!</button>   // ответ
+
+// Теперь работаем со своийством элемента как с обычной переменной, записываем через точку после имени переменной (меняем наименовавине кнопки на Convert)  
+// Свойство innerHTML устанавливает или получает всю разметку и содержание внутри данного элемента. 
+var node = document.getElementById("convert");
+var name = node.id;
+node.innerHTML = "Convert";
+
+***
+
+4.3.3 ФУКЦИИ
+
+// функция с ключевым словом return - возвращает значение
+function f(x) {
+return x * x;
+}
+
+// Вызовем нашу функцию с агрументом 5, а возвращает значение присвоенное переменной
+var result = f(5); 
+
+Смотрим значение переменной 
+result;
+
+25 // ответ
+
+
+
+// функции могут иметь несколько аргументов
+function average(x, y, z) {
+var sum = x +y +z;
+return sum / 3
+}
+
+Вызываем фукцию с агруметами 8,3,4
+average(8, 3, 4);
+
+5   // ответ
+
+
+
+// Аргументом в функции могут быть не только числа, но и строки
+function wrap(text, bounds) {
+return bounds + text +bounds;
+}
+
+// Вызываем фукцию со страками "о", "кол"
+wrap("о", "кол")
+
+"колокол" // ответ
+
+
+
+4.3.4 СОБЫТИЯ
+
+
+// Выводим в консоль браузера общее число нажатий на кнопку - к файлу index_451.html
+var button = document.getElementById("convert"); 
+var count = 0;
+
+function print() {
+    count = count + 1;
+    console.log("Колличество нажатий кнопки: " + count);
+}
+
+button.addEventListener("click", print);  // выводим ответ при помощи обработчика события - функция print вызывается при событии "click"
+
+
+4.5.1 КОНВЕРТОР ТЕМПЕРАТУР: ФУКЦИОНАЛЬНОСТЬ
+
+4.5.1.1 Строки и числа
+
+// Берем число из текстового поля "field" и добавляем к нему число - файл index_451.html - строки и числа,
+var input = document.getElementById("field");
+var x = input.value; 
+x + 1; 
+
+"31" // ответ, где своийто value является строкой, поэтому при сложении стрики и числа "3" + 1, для исправления нужно воспользоваться функцией Nunber
+
+
+
+// Исправляем строку на число. Используем фукцию Number, которая принимает строку и возвращает число - продолжение к файлу index_451.html - строки и числа, 
+var input = document.getElementById("field");
+var x = input.value;
+x = Number(input.value);
+x + 1;
+
+
+// Конвертор температур: формула перевода Цельсия в Фаренгейты 
+var c, f;
+c = 10
+f =( 9 / 5 * c) + 32;
+
+
+
+// Дает ответ в градусах Фаренгейта, c оруглением за счет toFixed(1) в панели Chrom - к файлу index_451.html
+
+var elField = document.getElementById("field"); // Кэшируем мастоположение "field"
+
+var x = elField.value; // Возвращает свойство (текстовое значение) value с помощью textObject .value 
+
+x = Number(elField.value);  // Воспользуемся функцией Number - принимает строку и возвращает число
+
+var shipping;
+
+shipping =( 9 / 5 * x) + 32; // формула перевода градусов в фаренгейты
+
+document.getElementById("subtotal").value = shipping.toFixed(1) // Задаем свойство (текстовое значение) value с помощью textObject. value = text, затем округляем за счет toFixed(1)
+
+
+
+
+// Готовый КОНВЕРТОР ТЕМПЕРАТУР - к файлу index_451.html
+var button = document.getElementById("convert");
+                 
+                 function print() {
+                     var elField = document.getElementById("field");
+                     var x = elField.value;
+                     x = Number(elField.value);
+                     shipping = ( 9 / 5 * x) + 32;
+                     
+                     document.getElementById("subtotal").value = shipping.toFixed(1);
+                 }
+                 
+                 button.addEventListener("click", print); // выводим ответ при помощи обработчика события - функция print вызывается при событии "click"
+				 
+				 
+

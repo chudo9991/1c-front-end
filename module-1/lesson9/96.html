@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 9</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <h3>9.3.2 absolute</h3>
+   <p>Вынимает элемент из нормального потока и позиционирует его относительно ближайшего предка, у которого значение <b>position</b> отличается от значения по умолчанию. Если такого предка нет, позиционирование производится относительно документа. Противоположные свойства можно комбинировать. Размеры элемента определяются по содержимому.</p>
+   <style>
+    .outer {
+        border: 1px solid lightblue;
+        border-radius: lightgrey;
+        height: 200px;
+    }
+        
+    .inner {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+    }
+    
+    .inner--red { background-color: red;}
+    .inner--green { background-color: green; }
+    
+    .inner:active {
+        position: absolute;
+        width: auto;
+        height: auto;
+        left: 0;
+        right: 0;
+        top: 100px;
+        bottom: 100px;
+    }
+    </style>
+
+    <div class="outer">
+        <div class="inner inner--red">
+        </div><div class="inner inner--green">
+        </div>
+    </div>
+  
+    <p style="color: #00cc00;">Задание для самостоятельной работы!
+        <ul>
+            <li>Видоизмените в листинге 9.5 с позапрошлой страницы класс .inner:active</li>
+            <li>Напишите в чат трансляции что происходит при нажатии на блоки и почему?</li>
+        </ul>
+        <pre>
+        Листинг 9.8 Класс .inner:active    
+
+        .inner:active {
+            position: absolute;
+            width: auto;
+            height: auto;
+            left: 0;
+            right: 0;
+            top: 100px;
+            bottom: 100px;
+        }
+        </pre>
+    </p>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <footer class="blue-footer">        
+        <a href="95.html">Назад</a>&nbsp;|&nbsp;<a href="97.html">Вперед</a>
+    </footer>  
+</body>
+</html>

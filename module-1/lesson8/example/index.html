@@ -7,8 +7,45 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <!-- Здесь будет наш HTML-код! -->
+    <div class="row">
+        <div class="offset-md-5 col-md-2 text-center mt-5 mb-5">
+        <div id="window" class="modal fade" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Заголовок</h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                            ×
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Содержимое</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">
+                            Закрыть
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                            Сохранить
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" id="launcher" class="btn btn-secondary">
+            Запустить модальное окно
+        </button>
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        $("#launcher").on("click", function() {
+            $("#window").modal("show");
+         });
+    </script>
+        
+</body>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8">
+    <title>Занятие 12</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h3>12.1.1 shuffleTiles</h3>
+    <p></p>
+    <pre>
+        Листинг script.js 
+
+        function shuffleTiles() { 
+            var i, index; 
+            for(i = 0; i < 1000; ++i) { 
+                index = Math.floor(Math.random() * tiles.length);
+                tiles[index].click();
+                }
+            shuffled = true;
+            }
+
+        ...
+        ...
+        
+        shuffleTiles();
+    </pre>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <footer class="blue-footer">        
+        <a href="../114.html">Назад</a>&nbsp;|&nbsp;Вперед
+    </footer>  
+</body>
+</html>
